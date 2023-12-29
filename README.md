@@ -1,2 +1,3 @@
 # scopie
-Scope based authorization framework design
+Scope based authorization framework design.
+

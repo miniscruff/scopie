@@ -1,0 +1,54 @@
+site_name: Scopie
+site_url: https://scopie.dev
+site_author: Ronnie  Smith
+site_description: >-
+  Extensible authorization with your own data.
+
+repo_url: https://github.com/miniscruff/scopie
+repo_name: miniscruff/scopie
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: deep orange
+      accent: cyan
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: cyan
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+  icon:
+    repo: simple/github
+plugins:
+  - search
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Specification: specification.md
+  - Examples:
+      - Blog: examples/blog.md

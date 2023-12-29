@@ -1,0 +1,179 @@
+{
+  "version": "alpha",
+  "coming_soon": [
+    "white space: error",
+    "var in array: error",
+    "var not found: error",
+    "wildcard in array: error",
+    "super wildcard in array: error",
+    "super wildcard at the start: error",
+    "empty rule: deny",
+    "empty actor: deny",
+    "no match: deny",
+    "actor shorter then rule: deny",
+    "rule shorter then actor: deny"
+  ],
+  "validations": [
+      {
+          "id": "",
+          "actor": "",
+          "rule": "",
+          "result": false
+          "error": ""
+      }
+  ],
+  "benchmarks": [
+    {
+      "id": "allow,1actor,1rule,1block1length",
+      "actor": "allow/A",
+      "rules": "A",
+      "result": true
+    },
+    {
+      "id": "deny,1actor,1rule,1block1length",
+      "actor": "deny/A",
+      "rules": "A",
+      "result": false
+    },
+    {
+      "id": "allow,5actor,3rules,3blocks10length,best",
+      "actor": "allow/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,allow/buzzworthy/bemuzzling/jazzercise",
+      "rules": "razzmatazz/vajazzling/buckjumper,buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging",
+      "result": true
+    },
+    {
+      "id": "allow,5actor,3rules,3blocks10length,worst",
+      "actor": "allow/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,allow/buzzworthy/bemuzzling/jazzercise",
+      "rules": "buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging,buzzworthy/bemuzzling/jazzercise",
+      "result": true
+    },
+    {
+      "id": "deny,5actor,3rules,3blocks10length,best",
+      "actor": "deny/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,allow/buzzworthy/bemuzzling/jazzercise",
+      "rules": "razzmatazz/vajazzling/buckjumper,buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging",
+      "result": false
+    },
+    {
+      "id": "deny,5actor,3rules,3blocks10length,worst",
+      "actor": "allow/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,deny/buzzworthy/bemuzzling/jazzercise",
+      "rules": "buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging,buzzworthy/bemuzzling/jazzercise",
+      "result": false
+    },
+    {
+      "id": "allow,2actor,1rule,3block5length,3array,best",
+      "actor": "allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
+      "rules": "pzazz/jazzy/buzzy",
+      "result": true
+    },
+    {
+      "id": "allow,2actor,1rule,3block5length,3array,worst",
+      "actor": "allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
+      "rules": "abuzz/frizz/mezzo",
+      "result": true
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,3array,best",
+      "actor": "deny/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
+      "rules": "pzazz/jazzy/buzzy",
+      "result": false
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,3array,worst",
+      "actor": "allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,deny/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
+      "rules": "abuzz/frizz/mezzo",
+      "result": false
+    },
+    {
+      "id": "allow,3actor,1rule,3block5length,3variables,best",
+      "actor": "allow/@name01/@name02/@name03,allow/jimmy/jimpy/junky,allow/mujik/muzak/quack",
+      "rules": "value01/value02/value03",
+      "variables": {
+          "name01": "value01",
+          "name02": "value02",
+          "name03": "value03"
+      },
+      "result": true
+    },
+    {
+      "id": "allow,3actor,1rule,3block5length,3variables,worst",
+      "actor": "allow/jimmy/jimpy/junky,allow/mujik/muzak/quack,allow/@name01/@name02/@name03",
+      "rules": "value01/value02/value03",
+      "variables": {
+          "name01": "value01",
+          "name02": "value02",
+          "name03": "value03"
+      },
+      "result": true
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,3variables,best",
+      "actor": "deny/@name01/@name02/@name03,allow/quick/zappy/zippy,allow/jacks/jocko/jugum",
+      "rules": "value01/value02/value03",
+      "variables": {
+          "name01": "value01",
+          "name02": "value02",
+          "name03": "value03"
+      },
+      "result": false
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,3variables,best",
+      "actor": "allow/quick/zappy/zippy,allow/jacks/jocko/jugum,deny/@name01/@name02/@name03",
+      "rules": "value01/value02/value03",
+      "variables": {
+          "name01": "value01",
+          "name02": "value02",
+          "name03": "value03"
+      },
+      "result": false
+    },
+    {
+      "id": "allow,3actor,1rule,3block5length,wildcard,best",
+      "actor": "allow/jivey/*/juicy,allow/jimmy/jimpy/junky,allow/mujik/muzak/quack",
+      "rules": "jivey/juked/juicy",
+      "result": true
+    },
+    {
+      "id": "allow,3actor,1rule,3block5length,wildcard,worst",
+      "actor": "allow/jimmy/jimpy/junky,allow/mujik/muzak/quack,allow/juffs/*/jaggy",
+      "rules": "juffs/jokey/jaggy",
+      "result": true
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,wildcard,best",
+      "actor": "deny/khazi/*/pujah,allow/quick/zappy/zippy,allow/jacks/jocko/jugum",
+      "rules": "khazi/zincy/pujah",
+      "result": false
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,wildcard,best",
+      "actor": "allow/quick/zappy/zippy,allow/jacks/jocko/jugum,deny/zilch/*/kanzu",
+      "rules": "zilch/karzy/kanzu",
+      "result": false
+    },
+    {
+      "id": "allow,3actor,1rule,3block5length,superwildcard,best",
+      "actor": "allow/jivey/**,allow/jimmy/jimpy/junky,allow/mujik/muzak/quack",
+      "rules": "jivey/juked/juicy",
+      "result": true
+    },
+    {
+      "id": "allow,3actor,1rule,3block5length,superwildcard,worst",
+      "actor": "allow/jimmy/jimpy/junky,allow/mujik/muzak/quack,allow/juffs/**",
+      "rules": "juffs/jokey/jaggy",
+      "result": true
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,superwildcard,best",
+      "actor": "deny/khazi/**,allow/quick/zappy/zippy,allow/jacks/jocko/jugum",
+      "rules": "khazi/zincy/pujah",
+      "result": false
+    },
+    {
+      "id": "deny,2actor,1rule,3block5length,superwildcard,best",
+      "actor": "allow/quick/zappy/zippy,allow/jacks/jocko/jugum,deny/zilch/**",
+      "rules": "zilch/karzy/kanzu",
+      "result": false
+    }
+  ]
+}
