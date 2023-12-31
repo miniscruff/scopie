@@ -31,7 +31,6 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
-    - toc.integrate
     - navigation.top
     - search.suggest
   icon:
@@ -49,6 +48,11 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Specification: specification.md
+  - Specification:
+      - Overview: specification/overview.md
+      - Terms: specification/terms.md
+      - Interface: specification/interface.md
+      - Logic: specification/logic.md
+      - BNF: specification/bnf.md
   - Examples:
       - Blog: examples/blog.md
