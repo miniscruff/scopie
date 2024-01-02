@@ -504,6 +504,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Logic
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -513,6 +524,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deny-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deny Break
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allow-skips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Allow skips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flowchart
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -673,6 +739,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deny-break" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deny Break
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allow-skips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Allow skips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flowchart
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -690,7 +800,54 @@
 
 
 <h1 id="allow-rules">Allow rules</h1>
-<p>Coming Soon...</p>
+<p>Scopie flow works as a nested for loops iterating over the actor rules and required scopes.</p>
+<h2 id="matching">Matching</h2>
+<p>In order for a scope to match a rule it must have the same number of blocks,
+and that every block matches.</p>
+<div class="language-text highlight"><span class="filename">Mismatched Lengths</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>required = &quot;acme/accounts/edit&quot;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>actor    = &quot;accounts/*&quot;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            ^ actor has two levels while required has three
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Mismatched Block</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>required = &quot;acme/accounts/edit&quot;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>actor    = &quot;acme/accounts/read&quot;
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                           ^ edit does not equal read
+</span></code></pre></div>
+<h2 id="deny-break">Deny Break</h2>
+<p>If a scope matches a deny rule, we instantly return false.
+We do not check until the end of our loops in this case.
+If any error is present after the deny rule match, it will not be found or returned.</p>
+<div class="language-text highlight"><span class="filename">Deny Break</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>required = &quot;accounts/edit&quot;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>actor    = &quot;deny/accounts/*,allow/blogs/*&quot;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>           ^ matches      ^ skipped
+</span></code></pre></div>
+<h2 id="allow-skips">Allow skips</h2>
+<p>If an allow rule is matched early in the loops, we can skip trying to match any future
+allow rules as we already matched one.
+Thus, it is possible to not have errors returned if they are part of rules we effectively skipped.</p>
+<div class="language-text highlight"><span class="filename">Allow Skip</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>required = &quot;accounts/edit&quot;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>actor    = &quot;allow/accounts/*,allow/blogs/*&quot;
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>            ^ matches      ^ skipped
+</span></code></pre></div>
+<h2 id="flowchart">Flowchart</h2>
+<pre class="mermaid"><code>flowchart TD
+    AR[Actor Rules]
+    RS[Required Scopes]
+    D[All Checked]
+    M{Is Match}
+    DR[Deny Rule]
+    AlR[Allow Rule]
+    T((return true))
+    F((return false))
+
+    AR--&gt;|For each Required Scope|RS
+    RS--&gt;|Does the required scope\nmatch actor rule?|M
+    M--&gt;|Is Deny Rule|DR
+    M--&gt;|Is Allow Rule|AlR
+    DR--&gt;F
+    AlR--&gt;|Mark as allowed|RS
+    RS--&gt;|Checked all cases|D
+    D----&gt;|If allowed|T
+    D----&gt;|If not allowed|F</code></pre>
 
 
 
