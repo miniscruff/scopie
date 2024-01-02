@@ -9,13 +9,13 @@ and that every block matches.
 
 ```title="Mismatched Lengths"
 required = "acme/accounts/edit"
-actor    = "accounts/*"
+actor    = "allow/accounts/*"
             ^ actor has two levels while required has three
 ```
 
 ```title="Mismatched Block"
 required = "acme/accounts/edit"
-actor    = "acme/accounts/read"
+actor    = "allow/acme/accounts/read"
                            ^ edit does not equal read
 ```
 
