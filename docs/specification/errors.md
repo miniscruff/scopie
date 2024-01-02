@@ -9,8 +9,11 @@ but are probably not useful for your end users.
 
 **Format:**
 ```
-scopie <code> in <scopes or actor>@<character index of error>: <short message>`
+scopie <code>
+    in <scopes or actor>@<character index of error>:
+    <short message>
 ```
+Note: newlines added for clarity
 
 For a scope of `blog/:15/read`, since `:` is not allowed in scopes.
 ```
