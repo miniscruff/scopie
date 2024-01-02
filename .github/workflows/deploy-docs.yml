@@ -26,7 +26,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build Site
-        run: mkdocs buld --strict --clean
+        run: mkdocs build --strict --clean
 
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v3.9.3

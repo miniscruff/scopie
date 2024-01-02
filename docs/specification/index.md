@@ -10,22 +10,22 @@ This file also includes specific tests for benchmarking performance.
 
 <div class="grid cards" markdown>
 
--   :book: [Terms](/specification/terms/)
+-   :book: [Terms](terms.md)
 
     ---
     Understanding the terminology of Scopie.
 
--   :material-function: [Functions](/specification/functions/)
+-   :material-function: [Functions](functions.md)
 
     ---
-    What functions are defined in scopie [implementations](/implementations/).
+    What functions are defined in scopie [implementations](../implementations.md).
 
--   :warning: [Errors](/specification/errors/)
+-   :warning: [Errors](errors.md)
 
     ---
     Lookup what errors you may run into.
 
--   :fontawesome-solid-diagram-project: [Logic Flow](/specification/logic/)
+-   :fontawesome-solid-diagram-project: [Logic Flow](logic.md)
 
     ---
     Read about the logic rules for processing authorization.
