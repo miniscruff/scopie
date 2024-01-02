@@ -43,4 +43,3 @@ def create_post(self, user_id: int, body str):
         return
 
     create_post(user, body)
-```

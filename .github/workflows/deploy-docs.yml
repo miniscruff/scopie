@@ -1,0 +1,36 @@
+name: deploy-docs
+
+on:
+  push:
+    branches:
+      - main 
+    paths:
+    - 'docs/**'
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-docs:
+    name: Build Docs
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Build Site
+        run: mkdocs buld --strict --clean
+
+      - name: Deploy Docs
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          cname: scopie.dev
