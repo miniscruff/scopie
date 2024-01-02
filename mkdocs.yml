@@ -1,8 +1,8 @@
 site_name: Scopie
 site_url: https://scopie.dev
-site_author: Ronnie  Smith
+site_author: Ronnie Smith
 site_description: >-
-  Extensible authorization with your own data.
+  Extendable authorization with your own data.
 
 repo_url: https://github.com/miniscruff/scopie
 repo_name: miniscruff/scopie
@@ -32,7 +32,11 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.indexes
+    - navigation.top
     - search.suggest
+    - content.code.copy
+    - content.code.annotate 
   icon:
     repo: simple/github
 plugins:
@@ -42,17 +46,27 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - attr_list
+  - md_in_html
 
 nav:
   - Home: index.md
   - Specification:
-      - Overview: specification/overview.md
+      - specification/index.md
       - Terms: specification/terms.md
-      - Interface: specification/interface.md
+      - Functions: specification/functions.md
+      - Errors: specification/errors.md
       - Logic: specification/logic.md
       - BNF: specification/bnf.md
   - Examples:
+      - examples/index.md
       - Blog: examples/blog.md
+  - Implementations: implementations.md

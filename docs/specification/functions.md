@@ -1,9 +1,10 @@
-# Interface
+# Functions
+
 Scopie is designed to work in any language and in virtually any system that can use authorization.
 The exact interface will vary based on what how each language formats functions, variables and
 handles errors.
 
-```
+```py title="Is Allowed"
 # is_allowed returns whether or not our actor is allowed the action specified in the scopes string.
 # Depending on the language, we would also return an error, throw or raise an exception for invalid scopes.
 is_allowed(
@@ -18,7 +19,9 @@ is_allowed(
     # Example: "accounts/@username/*"
     actor []string,
 ) -> bool and error
+```
 
+```py title="Validate Scope"
 # ValidateScope checks whether or not the given scope is valid given the requirements outlined in the specification.
 # Depending on the language, we would return a native like error value.
 validate_scope(
@@ -27,5 +30,3 @@ validate_scope(
 ) error
 ```
 
-## Errors
-When validating a scope or trying to process a scope or rule that has an incorrect format we 

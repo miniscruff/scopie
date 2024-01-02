@@ -1,6 +1,6 @@
-# Example Blog
+# Scopie Blog
 
-# Example
+## Actions
 Blog project with accounts and posts under accounts.
 
 | Scope | Action |
@@ -21,7 +21,7 @@ Blog project with accounts and posts under accounts.
 /account/{account_id}/posts/update | update posts from an account
 /account/{account_id}/posts/delete | delete posts from an account
 
-## Example scenarios
+## Scenarios
 1. Allow a user to do everything on their account: id=acc_01
     * `allow/account/acc_01/*`
 1. Deny a user from reading a post: post_id=post_01
