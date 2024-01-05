@@ -24,7 +24,10 @@ jobs:
 
       - name: Install deps
         run: pip install -r requirements.txt
-
+      
+      - name: Build examples markdown docs
+        run: utils/build_examples.py
+        
       - name: Build Site
         run: mkdocs build --strict --clean
 
