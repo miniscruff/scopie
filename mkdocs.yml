@@ -1,28 +1,27 @@
 site_name: Scopie
 site_url: https://scopie.dev
 site_author: Ronnie Smith
-site_description: >-
-  Extendable authorization with your own data.
-
+site_description: Extendable authorization with your own data.
 repo_url: https://github.com/miniscruff/scopie
 repo_name: miniscruff/scopie
+extra:
+  repo_examples:
+    - go: https://raw.githubusercontent.com/miniscruff/scopie-go/main/scopie.go
+    - python: https://raw.githubusercontent.com/sockheadrps/AIODesa/main/examples/aiohttp_server.py
 theme:
   name: material
   palette:
-    # Palette toggle for light mode
     - scheme: default
       primary: deep orange
       accent: cyan
-      media: "(prefers-color-scheme: light)"
+      media: '(prefers-color-scheme: light)'
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
     - scheme: slate
       primary: deep orange
       accent: cyan
-      media: "(prefers-color-scheme: dark)"
+      media: '(prefers-color-scheme: dark)'
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
@@ -36,7 +35,7 @@ theme:
     - navigation.top
     - search.suggest
     - content.code.copy
-    - content.code.annotate 
+    - content.code.annotate
   icon:
     repo: simple/github
 plugins:
@@ -52,16 +51,15 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: !!python/name:pymdownx.superfences.fence_code_format ''
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji ''
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg ''
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
   - attr_list
   - md_in_html
-
 nav:
   - Home: index.md
   - Specification:
