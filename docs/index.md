@@ -35,7 +35,7 @@ We can check if they have the `blog/post/create` scope.
 def create_post(self, user_id: int, body str):
     user := get_user(user_id)
     auth_vars = {
-        "user_id"
+        "user_id": user_id,
         "user_name": user.username,
     }
 
