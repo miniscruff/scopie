@@ -42,7 +42,7 @@
       "actor": "allow/quick/zappy/@name01",
       "scopes": "quick/zappy/value01",
       "variables": {
-          "name01": "value01",
+          "name01": "value01"
       },
       "result": true
     },
@@ -51,7 +51,7 @@
       "actor": "allow/alamo/aline/*",
       "scopes": "alamo/aline/anchor",
       "variables": {
-          "name01": "value01",
+          "name01": "value01"
       },
       "result": true
     },
@@ -60,7 +60,7 @@
       "actor": "allow/antic/**",
       "scopes": "antic/apeek/antre",
       "variables": {
-          "name01": "value01",
+          "name01": "value01"
       },
       "result": true
     },
@@ -101,7 +101,7 @@
       "variables": {
           "name01": "value01"
       },
-      "error": "scopie-104 in actor@11: variable 'group' not found
+      "error": "scopie-104 in actor@11: variable 'group' not found"
     },
     {
       "id": "super wildcard not in the last block",
