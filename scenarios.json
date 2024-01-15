@@ -20,6 +20,12 @@
       "result": false
     },
     {
+      "id": "no match is deny 2",
+      "actor": "deny/blog/read",
+      "scopes": "blog/reader",
+      "result": false
+    },
+    {
       "id": "actor shorter then scope",
       "actor": "allow/blog/public",
       "scopes": "blog/public/read",
@@ -83,25 +89,46 @@
       "error": "scopie-101 in actor@16: variable 'group' found in array block"
     },
     {
-      "id": "variable inside an array group at end",
+      "id": "variable and the end of an array group",
       "actor": "allow/blog/read|write|@group",
       "scopes": "blog/exec",
       "error": "scopie-101 in actor@22: variable 'group' found in array block"
     },
     {
       "id": "wildcard inside an array group",
+      "actor": "allow/blog/read|*|write",
+      "scopes": "blog/exec",
+      "error": "scopie-102 in actor@16: wildcard found in array block"
+    },
+    {
+      "id": "wildcard at the end of an array group",
       "actor": "allow/blog/read|write|*",
       "scopes": "blog/exec",
       "error": "scopie-102 in actor@22: wildcard found in array block"
     },
     {
       "id": "super wildcard inside an array group",
+      "actor": "allow/blog/read|**|write",
+      "scopes": "blog/exec",
+      "error": "scopie-103 in actor@16: super wildcard found in array block"
+    },
+    {
+      "id": "super wildcard at the end of an array group",
       "actor": "allow/blog/read|write|**",
       "scopes": "blog/exec",
       "error": "scopie-103 in actor@22: super wildcard found in array block"
     },
     {
       "id": "variable not found",
+      "actor": "allow/blog/@group,allow/blog/read",
+      "scopes": "blog/exec",
+      "variables": {
+          "name01": "value01"
+      },
+      "error": "scopie-104 in actor@11: variable 'group' not found"
+    },
+    {
+      "id": "variable not found 2",
       "actor": "allow/blog/@group",
       "scopes": "blog/exec",
       "variables": {
@@ -113,7 +140,7 @@
       "id": "super wildcard not in the last block",
       "actor": "allow/blog/**/create",
       "scopes": "blog/exec",
-      "error": "scopie-105 in actor@13: super wildcard not in the last block"
+      "error": "scopie-105 in actor@11: super wildcard not in the last block"
     },
     {
       "id": "empty actor",
