@@ -78,6 +78,12 @@
     },
     {
       "id": "variable inside an array group",
+      "actor": "allow/blog/read|@group|write",
+      "scopes": "blog/exec",
+      "error": "scopie-101 in actor@16: variable 'group' found in array block"
+    },
+    {
+      "id": "variable inside an array group at end",
       "actor": "allow/blog/read|write|@group",
       "scopes": "blog/exec",
       "error": "scopie-101 in actor@22: variable 'group' found in array block"
