@@ -23,7 +23,8 @@ is_allowed(
 
 ```py title="Validate Scope"
 # ValidateScope checks whether or not the given scope is valid given the requirements outlined in the specification.
-# Depending on the language, we would return a native like error value.
+# Depending on the language, this could return a boolean and throw an error, return an error or any other language
+# standard.
 validate_scope(
     # Given scope to validate.
     scope string,

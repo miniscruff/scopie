@@ -1,18 +1,32 @@
 # Errors
 
 When validating a scope or trying to process a scope or rule that has an incorrect format we return or throw errors.
-To keep consistency across languages we define an error type in the specification and include error values as
+To keep consistency across languages we define an error format in the specification and include error messages as
 part of the validation test suite.
 
 Parsing the errors should not be required, this format is aimed at being helpful to log for internal debugging,
 but are probably not useful for your end users.
 
-**Format:**
+In cases where you are taking user input and saving a scope, you should use `validate_scope` function to check
+if the provided value is properly formatted.
+You may also need to do extra processing to make sure the values defined in the scope logically make sense
+in your system as a whole.
+
+**Formats:**
+When getting an error when trying to process the error mentions whether the invalid data came from
+the scope or actor.
 ```
 scopie-<code>
     in <scopes or actor>@<character index of error>:
     <short message>
 ```
+
+When using the validation function we omit the scope or actor as they are not given.
+```
+scopie-<code>@<character index of error>:
+    <short message>
+```
+
 Note: newlines added for clarity
 
 For a scope of `blog/:15/read`, since `:` is not allowed in scopes.
