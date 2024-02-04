@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://scopie.dev/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/implementations/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/examples/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/examples/blog/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/specification/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/specification/bnf/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/specification/errors/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/specification/functions/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/specification/logic/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://scopie.dev/specification/terms/</loc>
-         <lastmod>2024-01-08</lastmod>
+         <lastmod>2024-02-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

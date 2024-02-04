@@ -855,18 +855,28 @@
 
 <h1 id="errors">Errors</h1>
 <p>When validating a scope or trying to process a scope or rule that has an incorrect format we return or throw errors.
-To keep consistency across languages we define an error type in the specification and include error values as
+To keep consistency across languages we define an error format in the specification and include error messages as
 part of the validation test suite.</p>
 <p>Parsing the errors should not be required, this format is aimed at being helpful to log for internal debugging,
 but are probably not useful for your end users.</p>
-<p><strong>Format:</strong>
+<p>In cases where you are taking user input and saving a scope, you should use <code>validate_scope</code> function to check
+if the provided value is properly formatted.
+You may also need to do extra processing to make sure the values defined in the scope logically make sense
+in your system as a whole.</p>
+<p><strong>Formats:</strong>
+When getting an error when trying to process the error mentions whether the invalid data came from
+the scope or actor.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scopie-&lt;code&gt;
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    in &lt;scopes or actor&gt;@&lt;character index of error&gt;:
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    &lt;short message&gt;
-</span></code></pre></div>
-Note: newlines added for clarity</p>
+</span></code></pre></div></p>
+<p>When using the validation function we omit the scope or actor as they are not given.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scopie-&lt;code&gt;@&lt;character index of error&gt;:
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    &lt;short message&gt;
+</span></code></pre></div></p>
+<p>Note: newlines added for clarity</p>
 <p>For a scope of <code>blog/:15/read</code>, since <code>:</code> is not allowed in scopes.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scopie-100 in scopes@5: invalid character &#39;:&#39;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in scopes@5: invalid character &#39;:&#39;
 </span></code></pre></div></p>
 <p>Errors here are not in any particular order, but just as they are discovered or valiations written.
 Message formats are provided that will match the output which implementations will use for error values.
@@ -875,77 +885,77 @@ include variables from the respective scope or actor.</p>
 <h2 id="100">100</h2>
 <p>Invalid character.</p>
 <p>Scopie only allows letters, numbers, underscore <code>_</code>  and dashes <code>-</code> in scope blocks, any other character is invalid.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>blog/15/create
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>blog/15/create
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>blog/:15/create
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     ^ invalid character &#39;:&#39;
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>blog/:15/create
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>     ^ invalid character &#39;:&#39;
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>invalid character &#39;{character}&#39;
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>invalid character &#39;{character}&#39;
 </span></code></pre></div>
 <h2 id="101">101</h2>
 <p>Variable inside array group.</p>
 <p>Array blocks can not contain variables and must be the entire block on its own.
 This is so that variables are used more like namespaces or grouping specifiers and would conflict with
 array blocks that are one of a few actions or specific namespaces.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>projects/@project/repository/create
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>projects/@project/repository/create
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>projects/acme|sesame|@project/repository/create
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                     ^ variable not allowed inside array group
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>projects/acme|sesame|@project/repository/create
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                     ^ variable not allowed inside array group
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>variable &#39;{key}&#39; found in array block
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>variable &#39;{key}&#39; found in array block
 </span></code></pre></div>
 <h2 id="102">102</h2>
 <p>Wildcard in array.</p>
 <p>Array blocks can not contain wildcards and must be the entire block on its own.
 Having a wildcard would override any array or literal value.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>projects/acme/*
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>projects/acme/*
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>projects/acme/read|write|*
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>projects/acme/read|write|*
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>wildcard found in array block
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>wildcard found in array block
 </span></code></pre></div>
 <h2 id="103">103</h2>
 <p>Super wildcard in array</p>
 <p>Array blocks can not contain super wildcards and must be the entire block on its own.
 Having a super wildcard would override any array or literal value.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>projects/acme/**
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>projects/acme/**
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>projects/acme/read|write|**
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>projects/acme/read|write|**
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>super wildcard found in array block
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>super wildcard found in array block
 </span></code></pre></div>
 <h2 id="104">104</h2>
 <p>Variable key not found in dictionary.</p>
 <p>A variable was referenced that does not exist in the variable map or dictionary.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>vars = { &quot;project&quot;: &quot;acme&quot; }
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>projects/@project/repository/create
-</span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vars = { &quot;user&quot;: &quot;tnt&quot; }
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vars = { &quot;project&quot;: &quot;acme&quot; }
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>projects/@project/repository/create
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>         ^ variable project does not exist
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>variable &#39;{key}&#39; not found
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>vars = { &quot;user&quot;: &quot;tnt&quot; }
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>projects/@project/repository/create
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>         ^ variable project does not exist
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>variable &#39;{key}&#39; not found
 </span></code></pre></div>
 <h2 id="105">105</h2>
 <p>Super wildcard not in the last block</p>
 <p>A super wildcard will auto match all future blocks, because of this any further
 blocks would be ignored.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>projects/repository/**
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>projects/repository/**
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>projects/repository/**/create
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>projects/repository/**/create
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>super wildcard not in the last block
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>super wildcard not in the last block
 </span></code></pre></div>
 <h2 id="106">106</h2>
 <p>Empty scope</p>
 <p>Having an empty scope for either the actor or required scopes doesn't actually make any sense
 for authorization and is likely caused by something else.
 We return an error here instead to hopefully catch this instead of silently denying.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>accounts/create
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>accounts/create
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a># empty
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># empty
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>scope was empty
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>scope was empty
 </span></code></pre></div>
 
 
