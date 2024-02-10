@@ -200,7 +200,7 @@
       "id": "empty scope",
       "scope": "",
       "error": "scopie-106@0: scope was empty"
-    },
+    }
   ],
   "benchmarks": [
     {
