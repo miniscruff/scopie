@@ -157,6 +157,30 @@
   ],
   "scopeValidTests": [
     {
+      "id": "simple scope",
+      "scope": "allow/blog/read"
+    },
+    {
+      "id": "with wildcard",
+      "scope": "allow/blog/*/read"
+    },
+    {
+      "id": "with super wildcard",
+      "scope": "allow/blog/**"
+    },
+    {
+      "id": "with array",
+      "scope": "allow/blog/primary|secondary|third/read"
+    },
+    {
+      "id": "with variable",
+      "scope": "allow/blog/@owner/read"
+    },
+    {
+      "id": "combination",
+      "scope": "allow/blog/*/@region/primary|secondary/**"
+    },
+    {
       "id": "invalid special character",
       "scope": "allow/blog/:15",
       "error": "scopie-100@11: invalid character ':'"
