@@ -1,5 +1,5 @@
 {
-  "version": "alpha",
+  "version": "alpha-02",
   "isAllowedTests": [
     {
       "id": "basic allow match",
