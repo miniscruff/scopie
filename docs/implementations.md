@@ -14,11 +14,9 @@ hide:
 
 # Community Implementations
 
-Reach out to get your project listed here
+Reach out to get your project listed here.
 
-## Requiriements
-
-Follow this list to get your project listed above.
+## Requirements
 
 1. Create public functions matching the interface as defined in [functions](./specification/functions.md)
 1. Handle all the scenarios defined in the [scenarios.json](https://github.com/miniscruff/scopie/blob/main/scenarios.json)

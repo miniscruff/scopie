@@ -5,9 +5,6 @@ Note that just passing BNF is not enough to be a valid scope as there are edge c
 One such example is that super wildcards must be the last block.
 
 ```bnf
-<scopes> ::= <scope> (<scope_sep> <scope>)+ | <scope>
-<rules> ::= <rule> (<scope_sep> <rule>)+ | <rule>
-
 <rule> ::= <any_permission> (<block_sep> <scope>)+
 <scope> ::= <block> (<block_sep> <block>)+ | <block>
 
@@ -18,7 +15,6 @@ One such example is that super wildcards must be the last block.
 <any_permission> ::= <allow_permission> | <deny_permission>
 
 <block_sep> ::= "/"
-<scope_sep> ::= ","
 <array_sep> ::= "|"
 <var_prefix> ::= "@"
 <wildcard> ::= "*"
