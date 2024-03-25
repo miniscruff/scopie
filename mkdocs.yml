@@ -75,5 +75,6 @@ nav:
       - BNF: specification/bnf.md
   - Examples:
       - examples/index.md
-      - Blog: examples/blog.md
+      - GitHub Access Tokens: examples/github_token.md
+      - Discord Permissions: examples/discord_permissions.md
   - Implementations: implementations.md
