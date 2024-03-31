@@ -17,21 +17,20 @@ When getting an error when trying to process the error mentions whether the inva
 the scope or actor.
 ```
 scopie-<code>
-    in <scopes or actor>@<character index of error>:
+    in <scopes or actor>@<index of error>:
     <short message>
 ```
 
 When using the validation function we omit the scope or actor as they are not given.
 ```
-scopie-<code>@<character index of error>:
-    <short message>
+scopie-<code> <short message>
 ```
 
 Note: newlines added for clarity
 
-For a scope of `blog/:15/read`, since `:` is not allowed in scopes.
+For scopes of `["blog/:15/read"]`, since `:` is not allowed in scopes.
 ```
-scopie-100 in scopes@5: invalid character ':'
+scopie-100 in scopes@0: invalid character ':'
 ```
 
 Errors here are not in any particular order, but just as they are discovered or valiations written.
