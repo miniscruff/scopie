@@ -17,8 +17,7 @@ When getting an error when trying to process the error mentions whether the inva
 the actor rules or action scopes.
 ```
 scopie-<code>
-    in <actor or action>@<index of error>:
-    <short message>
+    in <actor or action>: <short message>
 ```
 
 When using the validation function we omit the scope or actor as they are not given.
@@ -30,7 +29,7 @@ Note: newlines added for clarity
 
 For scopes of `["blog/:15/read"]`, since `:` is not allowed in scopes.
 ```
-scopie-100 in actor@0: invalid character ':'
+scopie-100 in actor: invalid character ':'
 ```
 
 Errors here are not in any particular order, but just as they are discovered or valiations written.
