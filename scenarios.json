@@ -146,7 +146,7 @@
       "id": "empty actor array",
       "actorRules": [],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-106 in actor@0: scope was empty"
+      "result": false
     },
     {
       "id": "empty actor rule",
@@ -158,13 +158,13 @@
       "id": "empty scope array",
       "actorRules": ["allow/accounts/read"],
       "actionScopes": [],
-      "error": "scopie-106 in scopes@0: scope was empty"
+      "error": "scopie-106 in action@0: scope was empty"
     },
     {
       "id": "empty scope rule",
       "actorRules": ["allow/accounts/read"],
       "actionScopes": [""],
-      "error": "scopie-106 in scopes@0: scope was empty"
+      "error": "scopie-106 in action@0: scope was empty"
     }
   ],
   "scopeValidTests": [

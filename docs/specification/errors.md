@@ -14,10 +14,10 @@ in your system as a whole.
 
 **Formats:**
 When getting an error when trying to process the error mentions whether the invalid data came from
-the scope or actor.
+the actor rules or action scopes.
 ```
 scopie-<code>
-    in <scopes or actor>@<index of error>:
+    in <actor or action>@<index of error>:
     <short message>
 ```
 
@@ -30,7 +30,7 @@ Note: newlines added for clarity
 
 For scopes of `["blog/:15/read"]`, since `:` is not allowed in scopes.
 ```
-scopie-100 in scopes@0: invalid character ':'
+scopie-100 in actor@0: invalid character ':'
 ```
 
 Errors here are not in any particular order, but just as they are discovered or valiations written.
