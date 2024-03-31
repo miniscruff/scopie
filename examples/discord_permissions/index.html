@@ -12,25 +12,25 @@
         <meta name="author" content="Ronnie Smith">
       
       
-        <link rel="canonical" href="https://scopie.dev/examples/blog/">
+        <link rel="canonical" href="https://scopie.dev/examples/discord_permissions/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../github_token/">
       
       
         <link rel="next" href="../../implementations/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <link rel="icon" href="../../static/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
     
     
       
-        <title>Blog - Scopie</title>
+        <title>Discord Permissions - Scopie</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -69,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="cyan">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="cyan">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scopie-blog" class="md-skip">
+        <a href="#discord-permissions" class="md-skip">
           Skip to content
         </a>
       
@@ -94,8 +94,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Scopie" class="md-header__button md-logo" aria-label="Scopie" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../../static/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -112,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Discord Permissions
             
           </span>
         </div>
@@ -125,7 +124,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-blue" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
@@ -135,7 +134,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
@@ -316,8 +315,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Scopie" class="md-nav__button md-logo" aria-label="Scopie" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../../static/logo.svg" alt="logo">
 
     </a>
     Scopie
@@ -382,14 +380,14 @@
       
     
     
-    
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
@@ -408,7 +406,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -552,16 +550,21 @@
       
         
       
-    
-    
+        
+      
     
     
       
+        
+        
       
+      
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
@@ -599,6 +602,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../github_token/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Access Tokens
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -615,7 +639,7 @@
           
   
   <span class="md-ellipsis">
-    Blog
+    Discord Permissions
   </span>
   
 
@@ -626,7 +650,7 @@
         
   
   <span class="md-ellipsis">
-    Blog
+    Discord Permissions
   </span>
   
 
@@ -648,20 +672,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
+  <a href="#server-scopes" class="md-nav__link">
     <span class="md-ellipsis">
-      Actions
+      Server Scopes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scenarios" class="md-nav__link">
+  <a href="#example-scopes" class="md-nav__link">
     <span class="md-ellipsis">
-      Scenarios
+      Example scopes
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Example scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#super-wildcards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Super wildcards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildcards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wildcards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -728,20 +776,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
+  <a href="#server-scopes" class="md-nav__link">
     <span class="md-ellipsis">
-      Actions
+      Server Scopes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scenarios" class="md-nav__link">
+  <a href="#example-scopes" class="md-nav__link">
     <span class="md-ellipsis">
-      Scenarios
+      Example scopes
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Example scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#super-wildcards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Super wildcards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildcards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wildcards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -763,104 +835,163 @@
   
 
 
-<h1 id="scopie-blog">Scopie Blog</h1>
-<h2 id="actions">Actions</h2>
-<p>Blog project with accounts and posts under accounts.</p>
+<h1 id="discord-permissions">Discord Permissions</h1>
+<p>Discord users role based authorization for server administration.
+Below is an example of how you might go about supporting the same level
+of control but using scopie and scope based permissions.</p>
+<p>Not all discord permissions are listed below.</p>
+<h2 id="server-scopes">Server Scopes</h2>
+<p>Our structure for discord scopes is <code>(allow or deny)/server/&lt;server_id&gt;/&lt;group&gt;/&lt;action&gt;</code>.
+This is to allow us to define scopes across different servers while allowing us to
+also create different namespaces for scopes separate from servers later.
+It is also possible to separate server scopes completely from other servers, rather
+then trying to compare the server id within the scope.</p>
 <table>
 <thead>
 <tr>
-<th>Scope</th>
+<th>Group</th>
 <th>Action</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/account/{account_id}/read</td>
-<td>read account info</td>
+<td>channels</td>
+<td>create</td>
+<td>Create new channels</td>
 </tr>
 <tr>
-<td>/account/{account_id}/update</td>
-<td>update account info</td>
+<td>channels</td>
+<td>update</td>
+<td>Update channel values</td>
 </tr>
 <tr>
-<td>/account/{account_id}/delete</td>
-<td>delete account</td>
+<td>channels</td>
+<td>view</td>
+<td>View channels</td>
 </tr>
 <tr>
-<td>/blog/post/create</td>
-<td>create posts</td>
+<td>expressions</td>
+<td>create</td>
+<td>Add custom emojis, stickers, and sounds</td>
 </tr>
 <tr>
-<td>/blog/post/read</td>
-<td>read posts</td>
+<td>expressions</td>
+<td>update</td>
+<td>Update existing custom expressions</td>
 </tr>
 <tr>
-<td>/blog/post/{post_id}/read</td>
-<td>read a specific post</td>
+<td>expressions</td>
+<td>remove</td>
+<td>Remove custom expressions</td>
 </tr>
 <tr>
-<td>/blog/post/{post_id}/read_draft</td>
-<td>read a specific post that is in draft</td>
+<td>webhooks</td>
+<td>create</td>
+<td>Create new webhooks</td>
 </tr>
 <tr>
-<td>/blog/post/{post_id}/update</td>
-<td>update a specific post</td>
+<td>webhooks</td>
+<td>update</td>
+<td>Update existing webhooks</td>
 </tr>
 <tr>
-<td>/blog/post/{post_id}/delete</td>
-<td>delete a specific post</td>
+<td>webhooks</td>
+<td>remove</td>
+<td>Remove webhooks</td>
 </tr>
 <tr>
-<td>/blog/post/{post_id}/publish</td>
-<td>publish a specific post</td>
+<td>members</td>
+<td>kick</td>
+<td>Kick other members</td>
 </tr>
 <tr>
-<td>/blog/post/{post_id}/unpublish</td>
-<td>unpublish a specific post</td>
+<td>members</td>
+<td>ban</td>
+<td>Ban other members</td>
 </tr>
 <tr>
-<td>/account/{account_id}/posts/create</td>
-<td>create posts on an account</td>
+<td>members</td>
+<td>invite</td>
+<td>Invite new members</td>
 </tr>
 <tr>
-<td>/account/{account_id}/posts/read</td>
-<td>read posts from an account</td>
+<td>messages</td>
+<td>send</td>
+<td>Able to send messages</td>
 </tr>
 <tr>
-<td>/account/{account_id}/posts/update</td>
-<td>update posts from an account</td>
+<td>messages</td>
+<td>threads</td>
+<td>Able to send messages to threads</td>
 </tr>
 <tr>
-<td>/account/{account_id}/posts/delete</td>
-<td>delete posts from an account</td>
+<td>messages</td>
+<td>links</td>
+<td>Able to send links in messages</td>
+</tr>
+<tr>
+<td>messages</td>
+<td>files</td>
+<td>Able to send files in messages</td>
+</tr>
+<tr>
+<td>messages</td>
+<td>reactions</td>
+<td>Able to react to messages</td>
 </tr>
 </tbody>
 </table>
-<h2 id="scenarios">Scenarios</h2>
-<ol>
-<li>Allow a user to do everything on their account: id=acc_01<ul>
-<li><code>allow/account/acc_01/*</code></li>
-</ul>
-</li>
-<li>Deny a user from reading a post: post_id=post_01<ul>
-<li><code>deny/blog/post/read/post_01</code></li>
-</ul>
-</li>
-<li>Moderator can delete any post<ul>
-<li><code>allow/blog/post/*/delete</code></li>
-</ul>
-</li>
-<li>Allow a user to update a post on their account<ul>
-<li><code>allow/account/acc_01/posts/update</code></li>
-</ul>
-</li>
-<li>Account or post level checks<ul>
-<li><code>allow/account/acc_01/posts/read,allow/blog/post/post_01/read</code></li>
-<li>the checking actor must match one of the above, aka an OR check</li>
-<li>this leads to an O(n*m) where n = required scopes and m = actor scopes</li>
-</ul>
-</li>
-</ol>
+<h2 id="example-scopes">Example scopes</h2>
+<p>Here are a small list of examples scopes.
+Note that not all of these are practical and would be used in a real scenario.</p>
+<h3 id="super-wildcards">Super wildcards</h3>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allow/**</code></td>
+<td>Access to everything</td>
+</tr>
+<tr>
+<td><code>allow/server/**</code></td>
+<td>Access to everything on any server</td>
+</tr>
+<tr>
+<td><code>allow/server/&lt;server_id&gt;/**</code></td>
+<td>Access to everything on one server</td>
+</tr>
+<tr>
+<td><code>allow/server/&lt;server_id&gt;/&lt;group&gt;/**</code></td>
+<td>Access all actions related to a group</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the last example woudl work the same with a normal wildcard.</p>
+<h3 id="wildcards">Wildcards</h3>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allow/server/*/...</code></td>
+<td>Access to actions on any server</td>
+</tr>
+<tr>
+<td><code>allow/server/&lt;server_id&gt;/*/...</code></td>
+<td>Access to actions on one server</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -913,10 +1044,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.top", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.top", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   </body>
