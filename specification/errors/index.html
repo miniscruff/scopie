@@ -889,9 +889,9 @@ You may also need to do extra processing to make sure the values defined in the 
 in your system as a whole.</p>
 <p><strong>Formats:</strong>
 When getting an error when trying to process the error mentions whether the invalid data came from
-the scope or actor.
+the actor rules or action scopes.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scopie-&lt;code&gt;
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    in &lt;scopes or actor&gt;@&lt;index of error&gt;:
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    in &lt;actor or action&gt;@&lt;index of error&gt;:
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    &lt;short message&gt;
 </span></code></pre></div></p>
 <p>When using the validation function we omit the scope or actor as they are not given.
@@ -899,7 +899,7 @@ the scope or actor.
 </span></code></pre></div></p>
 <p>Note: newlines added for clarity</p>
 <p>For scopes of <code>["blog/:15/read"]</code>, since <code>:</code> is not allowed in scopes.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in scopes@0: invalid character &#39;:&#39;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in actor@0: invalid character &#39;:&#39;
 </span></code></pre></div></p>
 <p>Errors here are not in any particular order, but just as they are discovered or valiations written.
 Message formats are provided that will match the output which implementations will use for error values.
