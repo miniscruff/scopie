@@ -1,52 +1,52 @@
 {
-  "version": "alpha",
+  "version": "alpha-02",
   "isAllowedTests": [
     {
       "id": "basic allow match",
-      "actor": "allow/blog/read",
-      "scopes": "blog/read",
+      "actorRules": ["allow/blog/read"],
+      "actionScopes": ["blog/read"],
       "result": true
     },
     {
       "id": "basic deny match",
-      "actor": "deny/blog/read",
-      "scopes": "blog/read",
+      "actorRules": ["deny/blog/read"],
+      "actionScopes": ["blog/read"],
       "result": false
     },
     {
       "id": "no match is deny",
-      "actor": "deny/blog/read",
-      "scopes": "accounts/read",
+      "actorRules": ["deny/blog/read"],
+      "actionScopes": ["accounts/read"],
       "result": false
     },
     {
       "id": "no match is deny 2",
-      "actor": "deny/blog/read",
-      "scopes": "blog/reader",
+      "actorRules": ["deny/blog/read"],
+      "actionScopes": ["blog/reader"],
       "result": false
     },
     {
       "id": "actor shorter then scope",
-      "actor": "allow/blog/public",
-      "scopes": "blog/public/read",
+      "actorRules": ["allow/blog/public"],
+      "actionScopes": ["blog/public/read"],
       "result": false
     },
     {
       "id": "scope shorter then actor",
-      "actor": "allow/blog/public/read",
-      "scopes": "blog/public",
+      "actorRules": ["allow/blog/public/read"],
+      "actionScopes": ["blog/public"],
       "result": false
     },
     {
       "id": "match with array",
-      "actor": "allow/pzazz/jazzy/fuzzy|folky|buzzy",
-      "scopes": "pzazz/jazzy/buzzy",
+      "actorRules": ["allow/pzazz/jazzy/fuzzy|folky|buzzy"],
+      "actionScopes": ["pzazz/jazzy/buzzy"],
       "result": true
     },
     {
       "id": "match with variable",
-      "actor": "allow/quick/zappy/@name01",
-      "scopes": "quick/zappy/value01",
+      "actorRules": ["allow/quick/zappy/@name01"],
+      "actionScopes": ["quick/zappy/value01"],
       "variables": {
           "name01": "value01"
       },
@@ -54,8 +54,8 @@
     },
     {
       "id": "match with wildcard",
-      "actor": "allow/alamo/aline/*",
-      "scopes": "alamo/aline/anchor",
+      "actorRules": ["allow/alamo/aline/*"],
+      "actionScopes": ["alamo/aline/anchor"],
       "variables": {
           "name01": "value01"
       },
@@ -63,8 +63,8 @@
     },
     {
       "id": "match with super wildcard",
-      "actor": "allow/antic/**",
-      "scopes": "antic/apeek/antre",
+      "actorRules": ["allow/antic/**"],
+      "actionScopes": ["antic/apeek/antre"],
       "variables": {
           "name01": "value01"
       },
@@ -72,56 +72,56 @@
     },
     {
       "id": "invalid special character in actor",
-      "actor": "allow/blog/:15",
-      "scopes": "blog/read",
+      "actorRules": ["allow/blog/:15"],
+      "actionScopes": ["blog/read"],
       "error": "scopie-100 in actor@11: invalid character ':'"
     },
     {
       "id": "invalid special character in scopes",
-      "actor": "allow/blog/read",
-      "scopes": "blog/:15",
+      "actorRules": ["allow/blog/read"],
+      "actionScopes": ["blog/:15"],
       "error": "scopie-100 in scopes@5: invalid character ':'"
     },
     {
       "id": "variable inside an array group",
-      "actor": "allow/blog/read|@group|write",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/read|@group|write"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-101 in actor@16: variable 'group' found in array block"
     },
     {
       "id": "variable and the end of an array group",
-      "actor": "allow/blog/read|write|@group",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/read|write|@group"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-101 in actor@22: variable 'group' found in array block"
     },
     {
       "id": "wildcard inside an array group",
-      "actor": "allow/blog/read|*|write",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/read|*|write"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-102 in actor@16: wildcard found in array block"
     },
     {
       "id": "wildcard at the end of an array group",
-      "actor": "allow/blog/read|write|*",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/read|write|*"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-102 in actor@22: wildcard found in array block"
     },
     {
       "id": "super wildcard inside an array group",
-      "actor": "allow/blog/read|**|write",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/read|**|write"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-103 in actor@16: super wildcard found in array block"
     },
     {
       "id": "super wildcard at the end of an array group",
-      "actor": "allow/blog/read|write|**",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/read|write|**"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-103 in actor@22: super wildcard found in array block"
     },
     {
       "id": "variable not found",
-      "actor": "allow/blog/@group,allow/blog/read",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/@group","allow/blog/read"],
+      "actionScopes": ["blog/exec"],
       "variables": {
           "name01": "value01"
       },
@@ -129,8 +129,8 @@
     },
     {
       "id": "variable not found 2",
-      "actor": "allow/blog/@group",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/@group"],
+      "actionScopes": ["blog/exec"],
       "variables": {
           "name01": "value01"
       },
@@ -138,20 +138,32 @@
     },
     {
       "id": "super wildcard not in the last block",
-      "actor": "allow/blog/**/create",
-      "scopes": "blog/exec",
+      "actorRules": ["allow/blog/**/create"],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-105 in actor@11: super wildcard not in the last block"
     },
     {
-      "id": "empty actor",
-      "actor": "",
-      "scopes": "blog/exec",
+      "id": "empty actor array",
+      "actorRules": [],
+      "actionScopes": ["blog/exec"],
       "error": "scopie-106 in actor@0: scope was empty"
     },
     {
-      "id": "empty scopes",
-      "actor": "allow/accounts/read",
-      "scopes": "",
+      "id": "empty actor rule",
+      "actorRules": [""],
+      "actionScopes": ["blog/exec"],
+      "error": "scopie-106 in actor@0: scope was empty"
+    },
+    {
+      "id": "empty scope array",
+      "actorRules": ["allow/accounts/read"],
+      "actionScopes": [],
+      "error": "scopie-106 in scopes@0: scope was empty"
+    },
+    {
+      "id": "empty scope rule",
+      "actorRules": ["allow/accounts/read"],
+      "actionScopes": [""],
       "error": "scopie-106 in scopes@0: scope was empty"
     }
   ],
@@ -226,71 +238,123 @@
       "error": "scopie-106@0: scope was empty"
     }
   ],
+  "minimizeTests": [
+    {
+      "id": "duplicate scope",
+      "scopesOrRules": ["blog/read", "blog/read"],
+      "result": ["blog/read"]
+    },
+    {
+      "id": "merge array",
+      "scopesOrRules": ["blog/create", "blog/read"],
+      "result": ["blog/create|read"]
+    },
+    {
+      "id": "append to array",
+      "scopesOrRules": ["blog/create", "blog/read|update"],
+      "result": ["blog/create|read|update"]
+    },
+    {
+      "id": "wildcard reduction",
+      "scopesOrRules": ["blog/create", "blog/read", "blog/*"],
+      "result": ["blog/*"]
+    },
+    {
+      "id": "super wildcard reduction",
+      "scopesOrRules": ["blog/create", "blog/read", "blog/**"],
+      "result": ["blog/**"]
+    },
+    {
+      "id": "super wildcard reduction at two levels",
+      "scopesOrRules": ["blog/tech/read", "blog/tech/write", "blog/**"],
+      "result": ["blog/**"]
+    },
+    {
+      "id": "remove allow if it exactly matches a deny",
+      "scopesOrRules": ["allow/blog/read", "deny/blog/read"],
+      "result": ["deny/blog/read"]
+    },
+    {
+      "id": "remove allow if it is under a deny",
+      "scopesOrRules": ["allow/blog/tech/read", "deny/blog/**"],
+      "result": ["deny/blog/**"]
+    },
+    {
+      "id": "deep nested scope is still array swapped",
+      "scopesOrRules": ["a/b/c/d/e", "a/f/c/d/e"],
+      "result": ["a/b/c/d/e", "a/f/c/d/e"]
+    },
+    {
+      "id": "deep nested scopes with top and bottom level difference is not minimized",
+      "scopesOrRules": ["a/b/c/d/e", "a/f/c/d/g"],
+      "result": ["a/b/c/d/e", "a/f/c/d/g"]
+    }
+  ],
   "benchmarks": [
     {
       "id": "allow,1actor,1rule,1block1length",
-      "actor": "allow/A",
-      "scopes": "A",
+      "actorRules": ["allow/A"],
+      "actionScopes": ["A"],
       "result": true
     },
     {
       "id": "deny,1actor,1rule,1block1length",
-      "actor": "deny/A",
-      "scopes": "A",
+      "actorRules": ["deny/A"],
+      "actionScopes": ["A"],
       "result": false
     },
     {
       "id": "allow,5actor,3scopes,3blocks10length,best",
-      "actor": "allow/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,allow/buzzworthy/bemuzzling/jazzercise",
-      "scopes": "razzmatazz/vajazzling/buckjumper,buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging",
+      "actorRules": ["allow/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "allow/buzzworthy/bemuzzling/jazzercise"],
+      "actionScopes": ["razzmatazz/vajazzling/buckjumper", "buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging"],
       "result": true
     },
     {
       "id": "allow,5actor,3scopes,3blocks10length,worst",
-      "actor": "allow/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,allow/buzzworthy/bemuzzling/jazzercise",
-      "scopes": "buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging,buzzworthy/bemuzzling/jazzercise",
+      "actorRules": ["allow/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "allow/buzzworthy/bemuzzling/jazzercise"],
+      "actionScopes": ["buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging", "buzzworthy/bemuzzling/jazzercise"],
       "result": true
     },
     {
       "id": "deny,5actor,3scopes,3blocks10length,best",
-      "actor": "deny/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,allow/buzzworthy/bemuzzling/jazzercise",
-      "scopes": "razzmatazz/vajazzling/buckjumper,buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging",
+      "actorRules": ["deny/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "allow/buzzworthy/bemuzzling/jazzercise"],
+      "actionScopes": ["razzmatazz/vajazzling/buckjumper", "buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging"],
       "result": false
     },
     {
       "id": "deny,5actor,3scopes,3blocks10length,worst",
-      "actor": "allow/razzmatazz/vajazzling/buckjumper,allow/blackjacks/unpuzzling/unmuzzling,allow/jumboizing/embezzling/buckjumped,allow/whizzbangs/squeezebox/puzzlingly,deny/buzzworthy/bemuzzling/jazzercise",
-      "scopes": "buzzphase/dizzingly/puzzlement,schemozzle/scuzzballs/zigzagging,buzzworthy/bemuzzling/jazzercise",
+      "actorRules": ["allow/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "deny/buzzworthy/bemuzzling/jazzercise"],
+      "actionScopes": ["buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging", "buzzworthy/bemuzzling/jazzercise"],
       "result": false
     },
     {
       "id": "allow,2actor,1rule,3block5length,3array,best",
-      "actor": "allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
-      "scopes": "pzazz/jazzy/buzzy",
+      "actorRules": ["allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "actionScopes": ["pzazz/jazzy/buzzy"],
       "result": true
     },
     {
       "id": "allow,2actor,1rule,3block5length,3array,worst",
-      "actor": "allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
-      "scopes": "abuzz/frizz/mezzo",
+      "actorRules": ["allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "actionScopes": ["abuzz/frizz/mezzo"],
       "result": true
     },
     {
       "id": "deny,2actor,1rule,3block5length,3array,best",
-      "actor": "deny/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
-      "scopes": "pzazz/jazzy/buzzy",
+      "actorRules": ["deny/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "actionScopes": ["pzazz/jazzy/buzzy"],
       "result": false
     },
     {
       "id": "deny,2actor,1rule,3block5length,3array,worst",
-      "actor": "allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy,deny/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo",
-      "scopes": "abuzz/frizz/mezzo",
+      "actorRules": ["allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "deny/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "actionScopes": ["abuzz/frizz/mezzo"],
       "result": false
     },
     {
       "id": "allow,3actor,1rule,3block5length,3variables,best",
-      "actor": "allow/@name01/@name02/@name03,allow/jimmy/jimpy/junky,allow/mujik/muzak/quack",
-      "scopes": "value01/value02/value03",
+      "actorRules": ["allow/@name01/@name02/@name03", "allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack"],
+      "actionScopes": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -300,8 +364,8 @@
     },
     {
       "id": "allow,3actor,1rule,3block5length,3variables,worst",
-      "actor": "allow/jimmy/jimpy/junky,allow/mujik/muzak/quack,allow/@name01/@name02/@name03",
-      "scopes": "value01/value02/value03",
+      "actorRules": ["allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack", "allow/@name01/@name02/@name03"],
+      "actionScopes": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -311,8 +375,8 @@
     },
     {
       "id": "deny,2actor,1rule,3block5length,3variables,best",
-      "actor": "deny/@name01/@name02/@name03,allow/quick/zappy/zippy,allow/jacks/jocko/jugum",
-      "scopes": "value01/value02/value03",
+      "actorRules": ["deny/@name01/@name02/@name03", "allow/quick/zappy/zippy", "allow/jacks/jocko/jugum"],
+      "actionScopes": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -322,8 +386,8 @@
     },
     {
       "id": "deny,2actor,1rule,3block5length,3variables,best",
-      "actor": "allow/quick/zappy/zippy,allow/jacks/jocko/jugum,deny/@name01/@name02/@name03",
-      "scopes": "value01/value02/value03",
+      "actorRules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/@name01/@name02/@name03"],
+      "actionScopes": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -333,50 +397,50 @@
     },
     {
       "id": "allow,3actor,1rule,3block5length,wildcard,best",
-      "actor": "allow/jivey/*/juicy,allow/jimmy/jimpy/junky,allow/mujik/muzak/quack",
-      "scopes": "jivey/juked/juicy",
+      "actorRules": ["allow/jivey/*/juicy", "allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack"],
+      "actionScopes": ["jivey/juked/juicy"],
       "result": true
     },
     {
       "id": "allow,3actor,1rule,3block5length,wildcard,worst",
-      "actor": "allow/jimmy/jimpy/junky,allow/mujik/muzak/quack,allow/juffs/*/jaggy",
-      "scopes": "juffs/jokey/jaggy",
+      "actorRules": ["allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack", "allow/juffs/*/jaggy"],
+      "actionScopes": ["juffs/jokey/jaggy"],
       "result": true
     },
     {
       "id": "deny,2actor,1rule,3block5length,wildcard,best",
-      "actor": "deny/khazi/*/pujah,allow/quick/zappy/zippy,allow/jacks/jocko/jugum",
-      "scopes": "khazi/zincy/pujah",
+      "actorRules": ["deny/khazi/*/pujah", "allow/quick/zappy/zippy", "allow/jacks/jocko/jugum"],
+      "actionScopes": ["khazi/zincy/pujah"],
       "result": false
     },
     {
       "id": "deny,2actor,1rule,3block5length,wildcard,best",
-      "actor": "allow/quick/zappy/zippy,allow/jacks/jocko/jugum,deny/zilch/*/kanzu",
-      "scopes": "zilch/karzy/kanzu",
+      "actorRules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/zilch/*/kanzu"],
+      "actionScopes": ["zilch/karzy/kanzu"],
       "result": false
     },
     {
       "id": "allow,3actor,1rule,3block5length,superwildcard,best",
-      "actor": "allow/jivey/**,allow/jimmy/jimpy/junky,allow/mujik/muzak/quack",
-      "scopes": "jivey/juked/juicy",
+      "actorRules": ["allow/jivey/**", "allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack"],
+      "actionScopes": ["jivey/juked/juicy"],
       "result": true
     },
     {
       "id": "allow,3actor,1rule,3block5length,superwildcard,worst",
-      "actor": "allow/jimmy/jimpy/junky,allow/mujik/muzak/quack,allow/juffs/**",
-      "scopes": "juffs/jokey/jaggy",
+      "actorRules": ["allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack", "allow/juffs/**"],
+      "actionScopes": ["juffs/jokey/jaggy"],
       "result": true
     },
     {
       "id": "deny,2actor,1rule,3block5length,superwildcard,best",
-      "actor": "deny/khazi/**,allow/quick/zappy/zippy,allow/jacks/jocko/jugum",
-      "scopes": "khazi/zincy/pujah",
+      "actorRules": ["deny/khazi/**", "allow/quick/zappy/zippy", "allow/jacks/jocko/jugum"],
+      "actionScopes": ["khazi/zincy/pujah"],
       "result": false
     },
     {
       "id": "deny,2actor,1rule,3block5length,superwildcard,best",
-      "actor": "allow/quick/zappy/zippy,allow/jacks/jocko/jugum,deny/zilch/**",
-      "scopes": "zilch/karzy/kanzu",
+      "actorRules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/zilch/**"],
+      "actionScopes": ["zilch/karzy/kanzu"],
       "result": false
     }
   ]

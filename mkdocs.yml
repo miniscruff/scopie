@@ -7,11 +7,13 @@ site_description: >-
 repo_url: https://github.com/miniscruff/scopie
 repo_name: miniscruff/scopie
 theme:
+  logo: static/logo.svg
+  favicon: static/favicon.png
   name: material
   palette:
     # Palette toggle for light mode
     - scheme: default
-      primary: deep orange
+      primary: deep blue
       accent: cyan
       media: "(prefers-color-scheme: light)"
       toggle:
@@ -20,7 +22,7 @@ theme:
 
     # Palette toggle for dark mode
     - scheme: slate
-      primary: deep orange
+      primary: deep blue
       accent: cyan
       media: "(prefers-color-scheme: dark)"
       toggle:
@@ -36,7 +38,7 @@ theme:
     - navigation.top
     - search.suggest
     - content.code.copy
-    - content.code.annotate 
+    - content.code.annotate
   icon:
     repo: simple/github
 plugins:
@@ -73,5 +75,6 @@ nav:
       - BNF: specification/bnf.md
   - Examples:
       - examples/index.md
-      - Blog: examples/blog.md
+      - GitHub Access Tokens: examples/github_token.md
+      - Discord Permissions: examples/discord_permissions.md
   - Implementations: implementations.md
