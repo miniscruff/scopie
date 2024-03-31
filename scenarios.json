@@ -62,6 +62,12 @@
       "result": true
     },
     {
+      "id": "actor rule has more wildcards then action rule",
+      "actorRules": ["allow/*/*/*"],
+      "actionScopes": ["alamo/anchor"],
+      "result": false
+    },
+    {
       "id": "match with super wildcard",
       "actorRules": ["allow/antic/**"],
       "actionScopes": ["antic/apeek/antre"],
