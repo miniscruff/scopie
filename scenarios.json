@@ -83,10 +83,10 @@
       "error": "scopie-100 in actor: invalid character ':'"
     },
     {
-      "id": "invalid special character in ation",
+      "id": "invalid special character in action",
       "actorRules": ["allow/blog/read"],
       "actionScopes": ["blog/:15"],
-      "error": "scopie-100 in scopes: invalid character ':'"
+      "error": "scopie-100 in action: invalid character ':'"
     },
     {
       "id": "variable inside an array group",
