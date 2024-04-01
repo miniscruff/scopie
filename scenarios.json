@@ -26,13 +26,13 @@
       "result": false
     },
     {
-      "id": "actor shorter then scope",
+      "id": "actor shorter then action",
       "actorRules": ["allow/blog/public"],
       "actionScopes": ["blog/public/read"],
       "result": false
     },
     {
-      "id": "scope shorter then actor",
+      "id": "action shorter then actor",
       "actorRules": ["allow/blog/public/read"],
       "actionScopes": ["blog/public"],
       "result": false
@@ -83,7 +83,7 @@
       "error": "scopie-100 in actor: invalid character ':'"
     },
     {
-      "id": "invalid special character in scopes",
+      "id": "invalid special character in ation",
       "actorRules": ["allow/blog/read"],
       "actionScopes": ["blog/:15"],
       "error": "scopie-100 in scopes: invalid character ':'"
@@ -161,13 +161,13 @@
       "error": "scopie-106: actor rule was empty"
     },
     {
-      "id": "empty scope array",
+      "id": "empty action array",
       "actorRules": ["allow/accounts/read"],
       "actionScopes": [],
       "error": "scopie-106: action scopes was empty"
     },
     {
-      "id": "empty scope rule",
+      "id": "empty action rule",
       "actorRules": ["allow/accounts/read"],
       "actionScopes": [""],
       "error": "scopie-106: action scope was empty"
