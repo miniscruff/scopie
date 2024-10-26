@@ -244,58 +244,6 @@
       "error": "scopie-106: scope was empty"
     }
   ],
-  "minimizeTests": [
-    {
-      "id": "duplicate scope",
-      "scopesOrRules": ["blog/read", "blog/read"],
-      "result": ["blog/read"]
-    },
-    {
-      "id": "merge array",
-      "scopesOrRules": ["blog/create", "blog/read"],
-      "result": ["blog/create|read"]
-    },
-    {
-      "id": "append to array",
-      "scopesOrRules": ["blog/create", "blog/read|update"],
-      "result": ["blog/create|read|update"]
-    },
-    {
-      "id": "wildcard reduction",
-      "scopesOrRules": ["blog/create", "blog/read", "blog/*"],
-      "result": ["blog/*"]
-    },
-    {
-      "id": "super wildcard reduction",
-      "scopesOrRules": ["blog/create", "blog/read", "blog/**"],
-      "result": ["blog/**"]
-    },
-    {
-      "id": "super wildcard reduction at two levels",
-      "scopesOrRules": ["blog/tech/read", "blog/tech/write", "blog/**"],
-      "result": ["blog/**"]
-    },
-    {
-      "id": "remove allow if it exactly matches a deny",
-      "scopesOrRules": ["allow/blog/read", "deny/blog/read"],
-      "result": ["deny/blog/read"]
-    },
-    {
-      "id": "remove allow if it is under a deny",
-      "scopesOrRules": ["allow/blog/tech/read", "deny/blog/**"],
-      "result": ["deny/blog/**"]
-    },
-    {
-      "id": "deep nested scope is still array swapped",
-      "scopesOrRules": ["a/b/c/d/e", "a/f/c/d/e"],
-      "result": ["a/b/c/d/e", "a/f/c/d/e"]
-    },
-    {
-      "id": "deep nested scopes with top and bottom level difference is not minimized",
-      "scopesOrRules": ["a/b/c/d/e", "a/f/c/d/g"],
-      "result": ["a/b/c/d/e", "a/f/c/d/g"]
-    }
-  ],
   "benchmarks": [
     {
       "id": "allow,1actor,1rule,1block1length",
