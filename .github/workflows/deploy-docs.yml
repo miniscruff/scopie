@@ -3,9 +3,10 @@ name: deploy-docs
 on:
   push:
     branches:
-      - main 
+      - main
     paths:
-    - 'docs/**'
+      - 'docs/**'
+      - 'requirements.txt'
 
 permissions:
   contents: write
