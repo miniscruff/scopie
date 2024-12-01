@@ -1,3 +1,7 @@
+---
+description: Definitions and reasonings behind some scopie edge cases.
+---
+
 # Allow rules
 
 Scopie flow works as a nested for loop iterating over the actor rules and action scopes.

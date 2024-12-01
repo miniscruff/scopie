@@ -2,6 +2,7 @@
 hide:
   - navigation
   - toc
+title: Scopie language implementations
 ---
 
 # Official Implementations

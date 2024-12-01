@@ -1,3 +1,7 @@
+---
+description: Different styles of authorization systems built around scopie.
+---
+
 # Examples
 Scope and rules for sample projects.
 

@@ -1,3 +1,7 @@
+---
+description: What functions are defined by scopie.
+---
+
 # Functions
 
 Scopie is designed to work in any language and in virtually any system that can use authorization.

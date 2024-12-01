@@ -43,6 +43,7 @@ theme:
     repo: simple/github
 plugins:
   - search
+  - social
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true

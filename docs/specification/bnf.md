@@ -1,3 +1,7 @@
+---
+description: Scopie in BNF syntax
+---
+
 # BNF Notation
 [Backus Naur Form](https://www.geeksforgeeks.org/bnf-notation-in-compiler-design/) notation of the scopie
 parsing rules.

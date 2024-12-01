@@ -1,3 +1,7 @@
+---
+description: Explanation and list of all scopie error codes.
+---
+
 # Errors
 
 When validating a scope or trying to process a scope or rule that has an incorrect format we return or throw errors.

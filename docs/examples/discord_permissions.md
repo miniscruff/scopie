@@ -1,3 +1,7 @@
+---
+description: How to create a discord server like authorization system using scopie.
+---
+
 # Discord Permissions
 
 Discord users role based authorization for server administration.

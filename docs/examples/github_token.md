@@ -1,3 +1,7 @@
+---
+description: How to create a github like authorization system using scopie.
+---
+
 # GitHub Access Tokens
 
 If you ever needed to create an [access token for GitHub](https://github.com/settings/tokens/new)
