@@ -104,7 +104,10 @@ See [implementations](./implementations.md) for more complete guides per languag
 === "Go"
 
     ```go
-    import "github.com/miniscruff/scopie-go"
+    import (
+        "errors"
+        "github.com/miniscruff/scopie-go"
+    )
 
     type User struct {
         Scopes []string
@@ -125,25 +128,40 @@ See [implementations](./implementations.md) for more complete guides per languag
     }
     var blogStore map[string]BlogPost = map[string]BlogPost{}
 
-    func createBlog(username, blogSlug, blogContent string) {
+    func createBlog(username, blogSlug, blogContent string) error {
         user := users[username]
-        if scopie.IsAllowed(user.scopes, []string{"blog/create"}, nil) {
-            blogStore[blogSlug] = BlogPost{
-                Author: user,
-                Content: blogContent,
-            }
+        allowed, err := scopie.IsAllowed([]string{"blog/create"}, user.scopes, nil)
+        if err != nil {
+            return err
         }
+
+        if !allowed {
+            return errors.New("not allowed to create a blog post")
+        }
+
+        blogStore[blogSlug] = BlogPost{
+            Author: user,
+            Content: blogContent,
+        }
+        return nil
     }
 
-    func updateBlog(username, blogSlug, blogContent string) {
+    func updateBlog(username, blogSlug, blogContent string) error {
         user := users[username]
-        if scopie.IsAllowed(user.scopes, []string{"blog/update"}) {
-            blogPosts[blogSlug] = BlogPost{
-                author: user,
-                content: blogContent,
-            }
+        allowed, err := scopie.IsAllowed([]string{"blog/update"}, user.scopes, nil) {
+        if err != nil {
+            return err
         }
-    }
 
+        if !allowed {
+            return errors.New("not allowed to update this blog post")
+        }
+
+        blogPosts[blogSlug] = BlogPost{
+            author: user,
+            content: blogContent,
+        }
+        return nil
+    }
     ```
 
