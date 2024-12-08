@@ -78,14 +78,14 @@
     },
     {
       "id": "invalid special character in actor",
-      "actorRules": ["allow/blog/:15"],
+      "actorRules": ["allow/blog/:155"],
       "actionScopes": ["blog/read"],
       "error": "scopie-100 in actor: invalid character ':'"
     },
     {
       "id": "invalid special character in action",
       "actorRules": ["allow/blog/read"],
-      "actionScopes": ["blog/:15"],
+      "actionScopes": ["blog/:155"],
       "error": "scopie-100 in action: invalid character ':'"
     },
     {
