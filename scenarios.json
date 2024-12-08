@@ -339,7 +339,7 @@
       "result": false
     },
     {
-      "id": "deny,2actor,1rule,3block5length,3variables,best",
+      "id": "deny,2actor,1rule,3block5length,3variables,worst",
       "actorRules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/@name01/@name02/@name03"],
       "actionScopes": ["value01/value02/value03"],
       "variables": {
@@ -368,7 +368,7 @@
       "result": false
     },
     {
-      "id": "deny,2actor,1rule,3block5length,wildcard,best",
+      "id": "deny,2actor,1rule,3block5length,wildcard,worst",
       "actorRules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/zilch/*/kanzu"],
       "actionScopes": ["zilch/karzy/kanzu"],
       "result": false
