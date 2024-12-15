@@ -11,14 +11,14 @@ Try out scopes and rules in scopie to determine if the actor would be allowed to
 
 ## Action Scopes
 
-<textarea class="md-typeset" multiline id="action-scopes" name="action-scopes" rows="5" cols="42" wrap="off">
+<textarea class="md-typeset" multiline id="action-scopes-input" rows="5" cols="42" wrap="off">
 blog/create
 </textarea>
 <div id="action-scopes-error">Valid</div>
 
 ## Actor Rules
 
-<textarea class="md-typeset"id="actor-rules" name="actor-rules" rows="5" cols="42" wrap="off">
+<textarea class="md-typeset"id="actor-rules-input" rows="5" cols="42" wrap="off">
 allow/blog/create|update
 allow/accounts/read
 </textarea>

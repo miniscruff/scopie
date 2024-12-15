@@ -3,11 +3,11 @@ window.addEventListener("load", async function() {
 
   window.scopie = await import("/static/scopie.browser.min.js");
 
-  window.actionScopesInput = document.getElementById("action-scopes");
+  window.actionScopesInput = document.getElementById("action-scopes-input");
   window.actionScopesError = document.getElementById("action-scopes-error");
   window.actionValid = true;
 
-  window.actorRulesInput = document.getElementById("actor-rules");
+  window.actorRulesInput = document.getElementById("actor-rules-input");
   window.actorRulesError = document.getElementById("actor-rules-error");
   window.actorValid = true;
 
