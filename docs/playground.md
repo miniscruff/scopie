@@ -14,7 +14,7 @@ Try out scopes and rules in scopie to determine if the actor would be allowed to
 <textarea class="md-typeset" id="action-scopes-input" rows="5" cols="42" wrap="off">
 blog/create
 </textarea>
-<div id="action-scopes-error"></div>
+<div id="action-scopes-error">Valid</div>
 
 ## Actor Rules
 
@@ -22,7 +22,7 @@ blog/create
 allow/blog/create|update
 allow/accounts/read
 </textarea>
-<div id="actor-rules-error"></div>
+<div id="actor-rules-error">Valid</div>
 
 ## Result
 <div id="is-allowed">Is Allowed</div>
