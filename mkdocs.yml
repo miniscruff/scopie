@@ -64,9 +64,9 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
   - md_in_html
-
 nav:
   - Home: index.md
+  - Playground: playground.md
   - Specification:
       - specification/index.md
       - Terms: specification/terms.md
