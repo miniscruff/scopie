@@ -14,13 +14,19 @@ window.addEventListener("load", async function() {
   window.isAllowedDisplay = document.getElementById("is-allowed");
 
   window.updateAllowedState = function() {
-    try {
-      window.isAllowedDisplay.textContent = window.scopie.isAllowed(
-        window.actionScopesInput.value.trim().split('\n'),
-        window.actorRulesInput.value.trim().split('\n'),
-      ) ? "Is Allowed" : "Is Not Allowed"
-    } catch (e) {
-      window.isAllowedDisplay.textContent = e.toString();
+    if (!window.actionValid) {
+      window.isAllowedDisplay.textContent = "Action scopes are invalid"
+    } else if (!window.actorValid) {
+      window.isAllowedDisplay.textContent = "Actor rules are invalid"
+    } else {
+      try {
+        window.isAllowedDisplay.textContent = window.scopie.isAllowed(
+          window.actionScopesInput.value.trim().split('\n'),
+          window.actorRulesInput.value.trim().split('\n'),
+        ) ? "Is Allowed" : "Is Not Allowed"
+      } catch (e) {
+        window.isAllowedDisplay.textContent = e.toString();
+      }
     }
   }
 
