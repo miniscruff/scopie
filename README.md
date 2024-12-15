@@ -11,7 +11,7 @@ Aimed at being easy to use and implement without overtaking other parts of your 
 ## Implementations
 
 * [Go](https://github.com/miniscruff/scopie-go)
-* [Javascript](https://github.com/miniscruff/scopie-js) ( in development )
+* [Javascript](https://github.com/miniscruff/scopie-js)
 * [Python](https://github.com/miniscruff/scopie-py) ( in development )
 
 A language agnostic set of scenarios can be found in the [scenarios.json](./scenarios.json) file.
