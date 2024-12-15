@@ -41,3 +41,10 @@ allow/bucket/images/upload
 deny/iam_accounts/edit
 ```
 
+## Keywords
+They may not be explicity checked but it is important not to use any scopie keywords when
+defining scopes and rules as they may have unintended side effects.
+
+- allow
+- deny
+

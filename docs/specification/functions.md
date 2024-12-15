@@ -31,15 +31,15 @@ is_allowed(
 ) -> bool and error
 ```
 
-## Validate Scope
-Checks whether or not the given scope or rule is valid given the
+## Validate Scopes
+Checks whether or not the given scopes or rules are valid given the
 requirements outlined in the specification.
 Depending on the language, this could return a boolean and throw an error, return
 an error or other language standard.
 
-```py title="Validate Scope"
-validate_scope(
+```py title="Validate Scopes"
+validate_scopes(
     # Given scope or rule to validate.
-    scopeOrRule string,
+    scopeOrRules []string,
 ) error
 ```

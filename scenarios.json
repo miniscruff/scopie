@@ -1,5 +1,5 @@
 {
-  "version": "alpha-02",
+  "version": "alpha-03",
   "isAllowedTests": [
     {
       "id": "basic allow match",
@@ -92,37 +92,37 @@
       "id": "variable inside an array group",
       "actorRules": ["allow/blog/read|@group|write"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-101 in actor: variable 'group' found in array block"
+      "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "variable and the end of an array group",
       "actorRules": ["allow/blog/read|write|@group"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-101 in actor: variable 'group' found in array block"
+      "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "wildcard inside an array group",
       "actorRules": ["allow/blog/read|*|write"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-102 in actor: wildcard found in array block"
+      "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "wildcard at the end of an array group",
       "actorRules": ["allow/blog/read|write|*"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-102 in actor: wildcard found in array block"
+      "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "super wildcard inside an array group",
       "actorRules": ["allow/blog/read|**|write"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-103 in actor: super wildcard found in array block"
+      "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "super wildcard at the end of an array group",
       "actorRules": ["allow/blog/read|write|**"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-103 in actor: super wildcard found in array block"
+      "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "variable not found",
@@ -131,7 +131,7 @@
       "variables": {
           "name01": "value01"
       },
-      "error": "scopie-104 in actor: variable 'group' not found"
+      "error": "scopie-104: variable 'group' not found"
     },
     {
       "id": "variable not found 2",
@@ -140,13 +140,13 @@
       "variables": {
           "name01": "value01"
       },
-      "error": "scopie-104 in actor: variable 'group' not found"
+      "error": "scopie-104: variable 'group' not found"
     },
     {
       "id": "super wildcard not in the last block",
       "actorRules": ["allow/blog/**/create"],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-105 in actor: super wildcard not in the last block"
+      "error": "scopie-105: super wildcard not in the last block"
     },
     {
       "id": "empty actor array",
@@ -158,90 +158,105 @@
       "id": "empty actor rule",
       "actorRules": [""],
       "actionScopes": ["blog/exec"],
-      "error": "scopie-106: actor rule was empty"
+      "error": "scopie-106 in actor: rule was empty"
     },
     {
       "id": "empty action array",
       "actorRules": ["allow/accounts/read"],
       "actionScopes": [],
-      "error": "scopie-106: action scopes was empty"
+      "error": "scopie-106 in action: scopes was empty"
     },
     {
       "id": "empty action rule",
       "actorRules": ["allow/accounts/read"],
       "actionScopes": [""],
-      "error": "scopie-106: action scope was empty"
+      "error": "scopie-106 in action: scope was empty"
     }
   ],
-  "scopeValidTests": [
+  "validateScopesTests": [
     {
       "id": "simple scope",
-      "scope": "allow/blog/read"
+      "scopes": ["allow/blog/read"]
     },
     {
       "id": "with wildcard",
-      "scope": "allow/blog/*/read"
+      "scopes": ["allow/blog/*/read"]
     },
     {
       "id": "with super wildcard",
-      "scope": "allow/blog/**"
+      "scopes": ["allow/blog/**"]
     },
     {
       "id": "with array",
-      "scope": "allow/blog/primary|secondary|third/read"
+      "scopes": ["allow/blog/primary|secondary|third/read"]
     },
     {
       "id": "with variable",
-      "scope": "allow/blog/@owner/read"
+      "scopes": ["allow/blog/@owner/read"]
     },
     {
       "id": "combination",
-      "scope": "allow/blog/*/@region/primary|secondary/**"
+      "scopes": ["allow/blog/*/@region/primary|secondary/**"]
     },
     {
       "id": "invalid special character",
-      "scope": "allow/blog/:15",
+      "scopes": ["allow/blog/:15"],
       "error": "scopie-100: invalid character ':'"
     },
     {
       "id": "variable inside an array group",
-      "scope": "allow/blog/read|@group|write",
+      "scopes": ["allow/blog/read|@group|write"],
       "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "variable and the end of an array group",
-      "scope": "allow/blog/read|write|@group",
+      "scopes": ["allow/blog/read|write|@group"],
       "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "wildcard inside an array group",
-      "scope": "allow/blog/read|*|write",
+      "scopes": ["allow/blog/read|*|write"],
       "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "wildcard at the end of an array group",
-      "scope": "allow/blog/read|write|*",
+      "scopes": ["allow/blog/read|write|*"],
       "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "super wildcard inside an array group",
-      "scope": "allow/blog/read|**|write",
+      "scopes": ["allow/blog/read|**|write"],
       "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "super wildcard at the end of an array group",
-      "scope": "allow/blog/read|write|**",
+      "scopes": ["allow/blog/read|write|**"],
       "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "super wildcard not in the last block",
-      "scope": "allow/blog/**/create",
+      "scopes": ["allow/blog/**/create"],
       "error": "scopie-105: super wildcard not in the last block"
     },
     {
       "id": "empty scope",
-      "scope": "",
-      "error": "scopie-106: scope was empty"
+      "scopes": [""],
+      "error": "scopie-106: scope or rule was empty"
+    },
+    {
+      "id": "rule then scope",
+      "scopes": ["allow/blog/**", "blog/read"],
+      "error": "scopie-107: inconsistent array of scopes and rules"
+    },
+    {
+      "id": "scope then rule",
+      "scopes": ["blog/**", "allow/blog/read"],
+      "error": "scopie-107: inconsistent array of scopes and rules"
+    },
+    {
+      "id": "empty scope at second index",
+      "scopes": ["allow/blog/**", ""],
+      "error": "scopie-106: scope or rule was empty"
     }
   ],
   "benchmarks": [
