@@ -6,34 +6,34 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How to create a github like authorization system using scopie.">
+        <meta name="description" content="Extendable authorization with your own data.">
       
       
         <meta name="author" content="Ronnie Smith">
       
       
-        <link rel="canonical" href="https://scopie.dev/examples/github_token/">
+        <link rel="canonical" href="https://scopie.dev/playground/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../discord_permissions/">
+        <link rel="next" href="../specification/">
       
       
-      <link rel="icon" href="../../static/favicon.png">
+      <link rel="icon" href="../static/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
-        <title>GitHub Access Tokens - Scopie</title>
+        <title>Scopie language implementations - Scopie</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -61,11 +61,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="GitHub Access Tokens - Scopie" >
+        <meta  property="og:title"  content="Scopie language implementations - Scopie" >
       
-        <meta  property="og:description"  content="How to create a github like authorization system using scopie." >
+        <meta  property="og:description"  content="Extendable authorization with your own data." >
       
-        <meta  property="og:image"  content="https://scopie.dev/assets/images/social/examples/github_token.png" >
+        <meta  property="og:image"  content="https://scopie.dev/assets/images/social/playground.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -73,15 +73,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://scopie.dev/examples/github_token/" >
+        <meta  property="og:url"  content="https://scopie.dev/playground/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="GitHub Access Tokens - Scopie" >
+        <meta  name="twitter:title"  content="Scopie language implementations - Scopie" >
       
-        <meta  name="twitter:description"  content="How to create a github like authorization system using scopie." >
+        <meta  name="twitter:description"  content="Extendable authorization with your own data." >
       
-        <meta  name="twitter:image"  content="https://scopie.dev/assets/images/social/examples/github_token.png" >
+        <meta  name="twitter:image"  content="https://scopie.dev/assets/images/social/playground.png" >
       
     
     
@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#github-access-tokens" class="md-skip">
+        <a href="#playground" class="md-skip">
           Skip to content
         </a>
       
@@ -118,9 +118,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Scopie" class="md-header__button md-logo" aria-label="Scopie" data-md-component="logo">
+    <a href=".." title="Scopie" class="md-header__button md-logo" aria-label="Scopie" data-md-component="logo">
       
-  <img src="../../static/logo.svg" alt="logo">
+  <img src="../static/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GitHub Access Tokens
+              Scopie language implementations
             
           </span>
         </div>
@@ -246,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
     
@@ -261,9 +261,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../playground/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -282,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../specification/" class="md-tabs__link">
+        <a href="../specification/" class="md-tabs__link">
           
   
     
@@ -298,13 +300,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../examples/" class="md-tabs__link">
           
   
     
@@ -322,7 +322,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../implementations/" class="md-tabs__link">
+      <a href="../implementations/" class="md-tabs__link">
         
   
     
@@ -345,7 +345,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -356,9 +358,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Scopie" class="md-nav__button md-logo" aria-label="Scopie" data-md-component="logo">
+    <a href=".." title="Scopie" class="md-nav__button md-logo" aria-label="Scopie" data-md-component="logo">
       
-  <img src="../../static/logo.svg" alt="logo">
+  <img src="../static/logo.svg" alt="logo">
 
     </a>
     Scopie
@@ -385,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -402,10 +404,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../playground/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Playground
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -414,6 +436,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#action-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Action Scopes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actor-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actor Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -458,7 +527,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../specification/" class="md-nav__link ">
+            <a href="../specification/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -491,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/terms/" class="md-nav__link">
+      <a href="../specification/terms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/functions/" class="md-nav__link">
+      <a href="../specification/functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/errors/" class="md-nav__link">
+      <a href="../specification/errors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/logic/" class="md-nav__link">
+      <a href="../specification/logic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../specification/bnf/" class="md-nav__link">
+      <a href="../specification/bnf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -600,8 +669,6 @@
       
   
   
-    
-  
   
   
     
@@ -618,24 +685,21 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../examples/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -646,13 +710,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -665,30 +729,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    GitHub Access Tokens
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../examples/github_token/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -697,86 +741,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#repository-scopes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Repository Scopes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-control-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full control options
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-scopes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example scopes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example scopes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#super-wildcards" class="md-nav__link">
-    <span class="md-ellipsis">
-      Super wildcards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#wildcards" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wildcards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -789,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../discord_permissions/" class="md-nav__link">
+      <a href="../examples/discord_permissions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -817,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../implementations/" class="md-nav__link">
+      <a href="../implementations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -838,7 +802,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -857,62 +823,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#repository-scopes" class="md-nav__link">
+  <a href="#action-scopes" class="md-nav__link">
     <span class="md-ellipsis">
-      Repository Scopes
+      Action Scopes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-control-options" class="md-nav__link">
+  <a href="#actor-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Full control options
+      Actor Rules
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-scopes" class="md-nav__link">
+  <a href="#result" class="md-nav__link">
     <span class="md-ellipsis">
-      Example scopes
+      Result
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Example scopes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#super-wildcards" class="md-nav__link">
-    <span class="md-ellipsis">
-      Super wildcards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#wildcards" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wildcards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -934,204 +867,25 @@
   
 
 
-<h1 id="github-access-tokens">GitHub Access Tokens</h1>
-<p>If you ever needed to create an <a href="https://github.com/settings/tokens/new">access token for GitHub</a>
-this example attempts to match the same level of control using scopie.
-For brevity reasons, only the scopes related to repositories are listed.</p>
-<h2 id="repository-scopes">Repository Scopes</h2>
-<p>Our structure for repository scopes is <code>(allow or deny)/repo/&lt;org&gt;/&lt;repo&gt;/&lt;group&gt;/&lt;action&gt;</code>.
-This allows us to create organization, user or other scopes in a separate top level namespace,
-such that wildcards and super wildcards are grouped at the top level.</p>
-<table>
-<thead>
-<tr>
-<th>Group</th>
-<th>Action</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td>read</td>
-<td>Read commit status</td>
-</tr>
-<tr>
-<td>deployments</td>
-<td>read</td>
-<td>Read deployment status</td>
-</tr>
-<tr>
-<td>invites</td>
-<td>read</td>
-<td>Read invitations</td>
-</tr>
-<tr>
-<td>invites</td>
-<td>write</td>
-<td>Send invitations to other users</td>
-</tr>
-<tr>
-<td>security_events</td>
-<td>read</td>
-<td>Read security events</td>
-</tr>
-<tr>
-<td>workflow</td>
-<td>update</td>
-<td>Update GitHub action workflows</td>
-</tr>
-<tr>
-<td>packages</td>
-<td>upload</td>
-<td>Upload packages to GitHub package registry</td>
-</tr>
-<tr>
-<td>packages</td>
-<td>read</td>
-<td>Read packages from GitHub package registry</td>
-</tr>
-<tr>
-<td>packages</td>
-<td>delete</td>
-<td>Delete packages to GitHub package registry</td>
-</tr>
-<tr>
-<td>hooks</td>
-<td>write</td>
-<td>Write repository hooks</td>
-</tr>
-<tr>
-<td>hooks</td>
-<td>update</td>
-<td>Update repository hooks</td>
-</tr>
-<tr>
-<td>hooks</td>
-<td>delete</td>
-<td>Delete repository hooks</td>
-</tr>
-<tr>
-<td>discussions</td>
-<td>read</td>
-<td>Read discussions</td>
-</tr>
-<tr>
-<td>discussions</td>
-<td>create</td>
-<td>Create a new discussion</td>
-</tr>
-<tr>
-<td>discussions</td>
-<td>comment</td>
-<td>Comment on an existing discussion</td>
-</tr>
-<tr>
-<td>discussions</td>
-<td>delete</td>
-<td>Delete a discussion</td>
-</tr>
-<tr>
-<td>audits</td>
-<td>read</td>
-<td>Read the audit log</td>
-</tr>
-</tbody>
-</table>
-<h2 id="full-control-options">Full control options</h2>
-<p>Under the GitHub UI you can select the group headers to create tokens
-with full control over that group.
-The equilivent to that in scopie is using wildcards.</p>
-<p>For example, full control over the "discussion" actions, would be:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>allow/repo/&lt;org&gt;/&lt;repo&gt;/discussions/*
-</span></code></pre></div></p>
-<h2 id="example-scopes">Example scopes</h2>
-<p>Here are a small list of examples scopes.
-Not all of these would make sense in practice.</p>
-<h3 id="super-wildcards">Super wildcards</h3>
-<p>These scopes relate to using super wildcards for generalized access.</p>
-<table>
-<thead>
-<tr>
-<th>Scope</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>allow/**</code></td>
-<td>Access to everything</td>
-</tr>
-<tr>
-<td><code>allow/repo/**</code></td>
-<td>Access to everything under any organization</td>
-</tr>
-<tr>
-<td><code>allow/repo/&lt;org&gt;/**</code></td>
-<td>Access to everything under the organization</td>
-</tr>
-<tr>
-<td><code>allow/repo/&lt;org&gt;/&lt;repo&gt;/**</code></td>
-<td>Access to everything under the repository</td>
-</tr>
-<tr>
-<td><code>allow/repo/&lt;org&gt;/&lt;repo&gt;/&lt;group&gt;/**</code></td>
-<td>Access to all actions under the group</td>
-</tr>
-</tbody>
-</table>
-<h3 id="wildcards">Wildcards</h3>
-<p>These scopes relate to using wildcards for generalized access.</p>
-<table>
-<thead>
-<tr>
-<th>Scope</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>allow/repo/*/...</code></td>
-<td>Access to actions under any org</td>
-</tr>
-<tr>
-<td><code>allow/repo/&lt;org&gt;/*/...</code></td>
-<td>Access to actions under any repo</td>
-</tr>
-<tr>
-<td><code>allow/repo/&lt;org&gt;/&lt;repo&gt;/*/...</code></td>
-<td>Access to actions under any group</td>
-</tr>
-<tr>
-<td><code>allow/repo/*/*/</code></td>
-<td>Access to actions under any org and any repo</td>
-</tr>
-</tbody>
-</table>
-<p>Note that when scopes have multiple levels of variables you may need to wildcard more then one block.
-For example if you want to give access for specifically creating hooks ( <code>hooks/create</code> )
-on any repository in any organization, you would use <code>allow/repo/*/*/hooks/create</code>.</p>
-<p>Its possible to give access to any repository in the org as well such as <code>allow/repo/&lt;org&gt;/*/hooks/create</code>.</p>
-<p>There is also the unlikely scenario of giving access to a specific repository name in any org such as
-<code>allow/repo/*/docker_images/packages/upload</code> which would give access to upload packages to the "docker_images"
-repository in any organization.</p>
-<h3 id="variables">Variables</h3>
-<p>Actor scopes can include variables that relate to actor attempting to do the action.
-In our case we are going to use the <code>@username</code> variable which can be used as the organization just like GitHub.</p>
-<table>
-<thead>
-<tr>
-<th>Scope</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>allow/repo/@username/**</code></td>
-<td>Allow our user to do anything in our own organization</td>
-</tr>
-</tbody>
-</table>
+<h1 id="playground">Playground</h1>
+<p>Try out scopes and rules in scopie to determine if the actor would be allowed to run that action.</p>
+<h2 id="action-scopes">Action Scopes</h2>
+<textarea class="md-typeset" multiline id="action-scopes" name="action-scopes" rows="5" cols="42" wrap="off">
+blog/create
+</textarea>
+<div id="action-scopes-error">Valid</div>
+
+<h2 id="actor-rules">Actor Rules</h2>
+<textarea class="md-typeset"id="actor-rules" name="actor-rules" rows="5" cols="42" wrap="off">
+allow/blog/create|update
+allow/accounts/read
+</textarea>
+<div id="actor-rules-error">Valid</div>
+
+<h2 id="result">Result</h2>
+<div id="is-allowed">Is Allowed</div>
+
+<script defer async src="/static/playground.js"></script>
 
 
 
@@ -1144,6 +898,8 @@ In our case we are going to use the <code>@username</code> variable which can be
 
 
 
+
+  
 
 
 
@@ -1187,10 +943,10 @@ In our case we are going to use the <code>@username</code> variable which can be
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.top", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.top", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
