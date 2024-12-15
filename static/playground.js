@@ -13,29 +13,36 @@ window.addEventListener("load", async function() {
 
   window.isAllowedDisplay = document.getElementById("is-allowed");
 
+  window.updateAllowedState = function() {
+    try {
+      window.isAllowedDisplay.textContent = scopie.isAllowed(
+        window.actionScopesInput.value.trim().split('\n'),
+        window.actorRulesInput.value.trim().split('\n'),
+      ) ? "Is Allowed" : "Is Not Allowed"
+    } catch (e) {
+      window.isAllowedDisplay.textContent = e.toString();
+    }
+  }
+
+  /*
   window.actionScopesInput.addEventListener("keyup", function() {
-    const e = scopie.validateScope(window.actionScopesInput.value)
+    console.log(window.actionScopesInput.value.trim().split('\n'))
+    const e = scopie.validateScope(window.actionScopesInput.value.trim().split('\n'))
+    console.log('e', e)
     window.actionValid = e === undefined;
     window.actionScopesError.textContent = window.actionValid ? "Valid" : e.toString()
     window.updateAllowedState();
   });
   window.actorRulesInput.addEventListener("keyup", function() {
+    console.log(window.actorRulesInput.value.trim().split('\n'))
+    console.log('e', e)
     const e = scopie.validateScope(window.actorRulesInput.value.trim().split('\n'))
     window.actorValid = e === undefined;
     window.actorRulesError.textContent = window.actorValid ? "Valid" : e.toString();
     window.updateAllowedState();
   });
+  */
 
-  window.updateAllowedState = function() {
-    if (!window.actionValid) {
-      window.isAllowedDisplay.textContent = "Action scopes are invalid";
-    }else if (!window.actorValid) {
-      window.isAllowedDisplay.textContent = "Actor rules are invalid";
-    } else {
-      window.isAllowedDisplay.textContent = scopie.isAllowed(
-        window.actionScopesInput.value.trim().split('\n'),
-        window.actorRulesInput.value.trim().split('\n'),
-      ) ? "Is Allowed" : "Is Not Allowed"
-    }
-  }
+  window.actionScopesInput.addEventListener("keyup", window.updateAllowedState)
+  window.actorRulesInput.addEventListener("keyup", window.updateAllowedState)
 })
