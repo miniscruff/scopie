@@ -15,7 +15,7 @@ window.addEventListener("load", async function() {
 
   window.updateAllowedState = function() {
     try {
-      window.isAllowedDisplay.textContent = scopie.isAllowed(
+      window.isAllowedDisplay.textContent = window.scopie.isAllowed(
         window.actionScopesInput.value.trim().split('\n'),
         window.actorRulesInput.value.trim().split('\n'),
       ) ? "Is Allowed" : "Is Not Allowed"
@@ -25,13 +25,13 @@ window.addEventListener("load", async function() {
   }
 
   window.actionScopesInput.addEventListener("keyup", function() {
-    const e = scopie.validateScopes(window.actionScopesInput.value.trim().split('\n'))
+    const e = window.scopie.validateScopes(window.actionScopesInput.value.trim().split('\n'))
     window.actionValid = e === undefined;
     window.actionScopesError.textContent = window.actionValid ? "Valid" : e.toString()
     window.updateAllowedState();
   });
   window.actorRulesInput.addEventListener("keyup", function() {
-    const e = scopie.validateScopes(window.actorRulesInput.value.trim().split('\n'))
+    const e = window.scopie.validateScopes(window.actorRulesInput.value.trim().split('\n'))
     window.actorValid = e === undefined;
     window.actorRulesError.textContent = window.actorValid ? "Valid" : e.toString();
     window.updateAllowedState();
