@@ -646,6 +646,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#107" class="md-nav__link">
+    <span class="md-ellipsis">
+      107
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -922,6 +931,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#107" class="md-nav__link">
+    <span class="md-ellipsis">
+      107
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1041,6 +1059,17 @@ We return an error here instead to hopefully catch this instead of silently deny
 <div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># empty
 </span></code></pre></div>
 <div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>scope was empty
+</span></code></pre></div>
+<h2 id="107">107</h2>
+<p>Inconsistent Array</p>
+<p>Arrays of scopes and arrays of rules are expected to all be one type.</p>
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>accounts/create
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>blog/read
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>accounts/create
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>allow/blog/read
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>inconsistent array of scopes and rules
 </span></code></pre></div>
 
 
