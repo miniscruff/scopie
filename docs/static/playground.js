@@ -1,7 +1,7 @@
 window.addEventListener("load", async function() {
   console.log("scopie playground initializing")
 
-  window.scopie = await import("/static/scopie.browser.min.js");
+  window.scopie = await import("/static/scopie.browser.min.v0.3.0.js");
 
   window.actionScopesInput = document.getElementById("action-scopes-input");
   window.actionScopesError = document.getElementById("action-scopes-error");
@@ -24,25 +24,18 @@ window.addEventListener("load", async function() {
     }
   }
 
-  /*
   window.actionScopesInput.addEventListener("keyup", function() {
-    console.log(window.actionScopesInput.value.trim().split('\n'))
-    const e = scopie.validateScope(window.actionScopesInput.value.trim().split('\n'))
-    console.log('e', e)
+    const e = scopie.validateScopes(window.actionScopesInput.value.trim().split('\n'))
     window.actionValid = e === undefined;
     window.actionScopesError.textContent = window.actionValid ? "Valid" : e.toString()
     window.updateAllowedState();
   });
   window.actorRulesInput.addEventListener("keyup", function() {
-    console.log(window.actorRulesInput.value.trim().split('\n'))
-    console.log('e', e)
-    const e = scopie.validateScope(window.actorRulesInput.value.trim().split('\n'))
+    const e = scopie.validateScopes(window.actorRulesInput.value.trim().split('\n'))
     window.actorValid = e === undefined;
     window.actorRulesError.textContent = window.actorValid ? "Valid" : e.toString();
     window.updateAllowedState();
   });
-  */
 
-  window.actionScopesInput.addEventListener("keyup", window.updateAllowedState)
-  window.actorRulesInput.addEventListener("keyup", window.updateAllowedState)
+  window.updateAllowedState()
 })
