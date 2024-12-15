@@ -2,7 +2,7 @@
 hide:
   - navigation
   - toc
-title: Scopie language implementations
+title: Scopie playground
 ---
 
 # Playground

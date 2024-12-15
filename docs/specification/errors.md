@@ -172,3 +172,23 @@ accounts/create
 ```title="Message format"
 scope was empty
 ```
+
+## 107
+
+Inconsistent Array
+
+Arrays of scopes and arrays of rules are expected to all be one type.
+
+```title="Valid"
+accounts/create
+blog/read
+```
+
+```title="Invalid"
+accounts/create
+allow/blog/read
+```
+
+```title="Message format"
+inconsistent array of scopes and rules
+```
