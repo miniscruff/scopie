@@ -11,33 +11,29 @@ part of the validation test suite.
 Parsing the errors should not be required, this format is aimed at being helpful to log for internal debugging,
 but are probably not useful for your end users.
 
-In cases where you are taking user input and saving a scope, you should use `validate_scope` function to check
+In cases where you are taking user input and saving a scope, you should use the `validate_scope` function to check
 if the provided value is properly formatted.
 You may also need to do extra processing to make sure the values defined in the scope logically make sense
 in your system as a whole.
 
 **Formats:**
-When getting an error when trying to process the error mentions whether the invalid data came from
-the actor rules or action scopes.
+When getting an error processing it will mention whether the invalid data came from a rule or scope.
 ```
 scopie-<code>
-    in <actor or action>: <short message>
+    in <scope or rule>: <short message>
 ```
 
-When using the validation function we omit the scope or actor as they are not given.
+When using the validation function we omit the scope or rule as they are not given.
 ```
 scopie-<code> <short message>
 ```
 
-Note: newlines added for clarity
-
 For scopes of `["blog/:15/read"]`, since `:` is not allowed in scopes.
 ```
-scopie-100 in actor: invalid character ':'
+scopie-100 in scope: invalid character ':'
 ```
 
 Errors here are not in any particular order, but just as they are discovered or valiations written.
-Message formats are provided that will match the output which implementations will use for error values.
 In a lot of cases this will just reiterate the summary of the error but in some it will
 include variables from the respective scope or actor.
 
@@ -157,7 +153,7 @@ super wildcard not in the last block
 
 Empty scope
 
-Having an empty scope for either the actor or required scopes doesn't actually make any sense
+Having an empty scope for either the actor or rule doesn't actually make any sense
 for authorization and is likely caused by something else.
 We return an error here instead to hopefully catch this instead of silently denying.
 

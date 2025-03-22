@@ -4,7 +4,7 @@ description: Definitions and reasonings behind some scopie edge cases.
 
 # Allow rules
 
-Scopie flow works as a nested for loop iterating over the actor rules and action scopes.
+Scopie flow works as a nested for loop iterating over the rules and scopes.
 
 ## Matching
 
@@ -12,14 +12,14 @@ In order for a scope to match a rule it must have the same number of blocks,
 and that every block matches.
 
 ```title="Mismatched Lengths"
-action = ["acme/accounts/edit"]
-actor  = ["allow/accounts/*"]
-           ^ actor has two levels while required has three
+scopes = ["acme/accounts/edit"]
+rules  = ["allow/accounts/*"]
+           ^ rules has two levels while required has three
 ```
 
 ```title="Mismatched Block"
-action = ["acme/accounts/edit"]
-actor  = ["allow/acme/accounts/read"]
+scopes = ["acme/accounts/edit"]
+rules  = ["allow/acme/accounts/read"]
                                ^ edit does not equal read
 ```
 
@@ -30,8 +30,8 @@ We do not check until the end of our loops in this case.
 If any error is present after the deny rule match, it will not be found or returned.
 
 ```title="Deny Break"
-action = ["accounts/edit"]
-actor  = ["deny/accounts/*","allow/blogs/*"]
+scopes = ["accounts/edit"]
+rules  = ["deny/accounts/*","allow/blogs/*"]
                 ^ matches    ^ skipped
 ```
 
@@ -42,8 +42,8 @@ allow rules as we already matched one.
 Thus, it is possible to not have errors returned if they are part of rules we skipped.
 
 ```title="Allow Skip"
-action = ["accounts/edit"]
-actor  = ["allow/accounts/*","allow/blogs/*"]
+scopes = ["accounts/edit"]
+rules  = ["allow/accounts/*","allow/blogs/*"]
            ^ matches          ^ skipped
 ```
 
@@ -51,7 +51,7 @@ actor  = ["allow/accounts/*","allow/blogs/*"]
 
 ```mermaid
 flowchart TD
-    AR[Actor Rules]
+    AR[rules Rules]
     RS[Required Scopes]
     D[All Checked]
     M{Is Match}
@@ -61,7 +61,7 @@ flowchart TD
     F((return false))
 
     AR-->|For each Required Scope|RS
-    RS-->|Does the required scope\nmatch actor rule?|M
+    RS-->|Does the required scope\nmatch rules rule?|M
     M-->|Is Deny Rule|DR
     M-->|Is Allow Rule|AlR
     DR-->F

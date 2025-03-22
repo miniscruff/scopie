@@ -9,20 +9,20 @@ title: Scopie playground
 
 Try out scopes and rules in scopie to determine if the actor would be allowed to run that action.
 
-## Action Scopes
+## Scopes
 
-<textarea class="md-typeset" id="action-scopes-input" rows="5" cols="42" wrap="off">
+<textarea class="md-typeset" id="scopes-input" rows="5" cols="42" wrap="off">
 blog/create
 </textarea>
-<div id="action-scopes-error">Valid</div>
+<div id="scopes-error">Valid</div>
 
-## Actor Rules
+## Rules
 
-<textarea class="md-typeset" id="actor-rules-input" rows="5" cols="42" wrap="off">
+<textarea class="md-typeset" id="rules-input" rows="5" cols="42" wrap="off">
 allow/blog/create|update
 allow/accounts/read
 </textarea>
-<div id="actor-rules-error">Valid</div>
+<div id="rules-error">Valid</div>
 
 ## Result
 <div id="is-allowed">Is Allowed</div>
