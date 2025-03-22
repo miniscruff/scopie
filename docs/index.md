@@ -18,17 +18,17 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     const users = {
         elsa: {
-            scopes: ["allow/blog/create|update"],
+            rules: ["allow/blog/create|update"],
         },
         bella: {
-            scopes: ["allow/blog/create"],
+            rules: ["allow/blog/create"],
         },
     ]
     const blogPosts = {}
 
     function createBlog(username, blogSlug, blogContent) {
         const user = users[username]
-        if (isAllowed(user.scopes, ["blog/create"])) {
+        if (isAllowed(["blog/create"], user.rules)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -38,7 +38,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     function updateBlog(username, blogSlug, blogContent) {
         const user = users[username]
-        if (isAllowed(user.scopes, ["blog/update"])) {
+        if (isAllowed(["blog/update"], user.rules)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -53,7 +53,7 @@ See [implementations](./implementations.md) for more complete guides per languag
     import { isAllowed } from "scopie";
 
     type User = {
-        scopes: Array<string>;
+        rules: Array<string>;
     };
 
     type BlogPost = {
@@ -71,10 +71,10 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     const users: UserStore = {
         elsa: {
-            scopes: ["allow/blog/create|update"],
+            rules: ["allow/blog/create|update"],
         },
         bella: {
-            scopes: ["allow/blog/create"],
+            rules: ["allow/blog/create"],
         },
     }
 
@@ -82,7 +82,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     function createBlog(username: string, blogSlug: string, blogContent: string) {
         const user = users[username]
-        if (isAllowed(user.scopes, ["blog/create"])) {
+        if (isAllowed(["blog/create"], user.rules)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -92,7 +92,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     function updateBlog(username: string, blogSlug: string, blogContent: string) {
         const user = users[username]
-        if (isAllowed(user.scopes, ["blog/update"])) {
+        if (isAllowed(["blog/update"], user.rules)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -110,7 +110,7 @@ See [implementations](./implementations.md) for more complete guides per languag
     )
 
     type User struct {
-        Scopes []string
+        Rules []string
     }
 
     type BlogPost struct {
@@ -120,17 +120,17 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     var userStore map[string]User = map[string]User{
         "elsa": User{
-            Scopes: []string{"allow/blog/create|update"},
+            Rules: []string{"allow/blog/create|update"},
         },
         "belle": User{
-            Scopes: []string{"allow/blog/create"},
+            Rules: []string{"allow/blog/create"},
         },
     }
     var blogStore map[string]BlogPost = map[string]BlogPost{}
 
     func createBlog(username, blogSlug, blogContent string) error {
         user := users[username]
-        allowed, err := scopie.IsAllowed([]string{"blog/create"}, user.scopes, nil)
+        allowed, err := scopie.IsAllowed([]string{"blog/create"}, user.Rules, nil)
         if err != nil {
             return err
         }
@@ -148,7 +148,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     func updateBlog(username, blogSlug, blogContent string) error {
         user := users[username]
-        allowed, err := scopie.IsAllowed([]string{"blog/update"}, user.scopes, nil) {
+        allowed, err := scopie.IsAllowed([]string{"blog/update"}, user.Rules, nil) {
         if err != nil {
             return err
         }

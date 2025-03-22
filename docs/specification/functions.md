@@ -8,11 +8,12 @@ Scopie is designed to work in any language and in virtually any system that can 
 
 The exact interface will vary based on what how each language formats functions, variables and
 handles errors.
-Even the order of parameters may vary based on language due to optionals.
+Even the order of parameters may vary based on language due to optional or key value support.
 
 ## Is Allowed
-Returns whether or not our actor is allowed the action required.
-Depending on the language, we would also return an error, throw or raise an exception for invalid scopes.
+Returns whether or not the scopes are allowed with the given rules.
+Depending on the language, we would also return an error, throw or raise an exception for invalid
+scopes or rules.
 
 ```py title="Is Allowed"
 is_allowed(
@@ -20,10 +21,11 @@ is_allowed(
     # When using more then one scope, they are treated as a series of OR conditions,
     # and an actor will be allowed if they match any of the scopes.
     # Example: ["accounts/thor/edit"]
-    actionScopes []string,
-    # Actor specifies one or more rules our requesting actor has.
+    scopes []string,
+    # Rules specifies one or more rules our requesting scopes has to have
+    # to be allowed access.
     # Example: ["allow/accounts/@username/*"]
-    actorRules []string,
+    rules []string,
     # An optional dictionary or map of variable to values.
     # Variable keys should not start with `@`
     # Example: { "username": "thor" }
