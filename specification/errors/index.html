@@ -978,25 +978,22 @@ To keep consistency across languages we define an error format in the specificat
 part of the validation test suite.</p>
 <p>Parsing the errors should not be required, this format is aimed at being helpful to log for internal debugging,
 but are probably not useful for your end users.</p>
-<p>In cases where you are taking user input and saving a scope, you should use <code>validate_scope</code> function to check
+<p>In cases where you are taking user input and saving a scope, you should use the <code>validate_scope</code> function to check
 if the provided value is properly formatted.
 You may also need to do extra processing to make sure the values defined in the scope logically make sense
 in your system as a whole.</p>
 <p><strong>Formats:</strong>
-When getting an error when trying to process the error mentions whether the invalid data came from
-the actor rules or action scopes.
+When getting an error processing it will mention whether the invalid data came from a rule or scope.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scopie-&lt;code&gt;
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    in &lt;actor or action&gt;: &lt;short message&gt;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    in &lt;scope or rule&gt;: &lt;short message&gt;
 </span></code></pre></div></p>
-<p>When using the validation function we omit the scope or actor as they are not given.
+<p>When using the validation function we omit the scope or rule as they are not given.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scopie-&lt;code&gt; &lt;short message&gt;
 </span></code></pre></div></p>
-<p>Note: newlines added for clarity</p>
 <p>For scopes of <code>["blog/:15/read"]</code>, since <code>:</code> is not allowed in scopes.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in actor: invalid character &#39;:&#39;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in scope: invalid character &#39;:&#39;
 </span></code></pre></div></p>
 <p>Errors here are not in any particular order, but just as they are discovered or valiations written.
-Message formats are provided that will match the output which implementations will use for error values.
 In a lot of cases this will just reiterate the summary of the error but in some it will
 include variables from the respective scope or actor.</p>
 <h2 id="100">100</h2>
@@ -1065,7 +1062,7 @@ blocks would be ignored.</p>
 </span></code></pre></div>
 <h2 id="106">106</h2>
 <p>Empty scope</p>
-<p>Having an empty scope for either the actor or required scopes doesn't actually make any sense
+<p>Having an empty scope for either the actor or rule doesn't actually make any sense
 for authorization and is likely caused by something else.
 We return an error here instead to hopefully catch this instead of silently denying.</p>
 <div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>accounts/create

@@ -868,24 +868,26 @@
 <p>Scopie is designed to work in any language and in virtually any system that can use authorization.</p>
 <p>The exact interface will vary based on what how each language formats functions, variables and
 handles errors.
-Even the order of parameters may vary based on language due to optionals.</p>
+Even the order of parameters may vary based on language due to optional or key value support.</p>
 <h2 id="is-allowed">Is Allowed</h2>
-<p>Returns whether or not our actor is allowed the action required.
-Depending on the language, we would also return an error, throw or raise an exception for invalid scopes.</p>
+<p>Returns whether or not the scopes are allowed with the given rules.
+Depending on the language, we would also return an error, throw or raise an exception for invalid
+scopes or rules.</p>
 <div class="language-py highlight"><span class="filename">Is Allowed</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">is_allowed</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="c1"># Scopes specifies one or more scopes our actor must match.</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="c1"># When using more then one scope, they are treated as a series of OR conditions,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="c1"># and an actor will be allowed if they match any of the scopes.</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="c1"># Example: [&quot;accounts/thor/edit&quot;]</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">actionScopes</span> <span class="p">[]</span><span class="n">string</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1"># Actor specifies one or more rules our requesting actor has.</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="c1"># Example: [&quot;allow/accounts/@username/*&quot;]</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">actorRules</span> <span class="p">[]</span><span class="n">string</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="c1"># An optional dictionary or map of variable to values.</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="c1"># Variable keys should not start with `@`</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1"># Example: { &quot;username&quot;: &quot;thor&quot; }</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">variables</span> <span class="nb">dict</span><span class="p">[</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="p">],</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="ow">and</span> <span class="n">error</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">scopes</span> <span class="p">[]</span><span class="n">string</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1"># Rules specifies one or more rules our requesting scopes has to have</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="c1"># to be allowed access.</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="c1"># Example: [&quot;allow/accounts/@username/*&quot;]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">rules</span> <span class="p">[]</span><span class="n">string</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="c1"># An optional dictionary or map of variable to values.</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1"># Variable keys should not start with `@`</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="c1"># Example: { &quot;username&quot;: &quot;thor&quot; }</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">variables</span> <span class="nb">dict</span><span class="p">[</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="p">],</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="ow">and</span> <span class="n">error</span>
 </span></code></pre></div>
 <h2 id="validate-scopes">Validate Scopes</h2>
 <p>Checks whether or not the given scopes or rules are valid given the

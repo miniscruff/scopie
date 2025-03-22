@@ -901,37 +901,37 @@
 
 
 <h1 id="allow-rules">Allow rules</h1>
-<p>Scopie flow works as a nested for loop iterating over the actor rules and action scopes.</p>
+<p>Scopie flow works as a nested for loop iterating over the rules and scopes.</p>
 <h2 id="matching">Matching</h2>
 <p>In order for a scope to match a rule it must have the same number of blocks,
 and that every block matches.</p>
-<div class="language-text highlight"><span class="filename">Mismatched Lengths</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>action = [&quot;acme/accounts/edit&quot;]
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>actor  = [&quot;allow/accounts/*&quot;]
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>           ^ actor has two levels while required has three
+<div class="language-text highlight"><span class="filename">Mismatched Lengths</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scopes = [&quot;acme/accounts/edit&quot;]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>rules  = [&quot;allow/accounts/*&quot;]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>           ^ rules has two levels while required has three
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Mismatched Block</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>action = [&quot;acme/accounts/edit&quot;]
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>actor  = [&quot;allow/acme/accounts/read&quot;]
+<div class="language-text highlight"><span class="filename">Mismatched Block</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scopes = [&quot;acme/accounts/edit&quot;]
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>rules  = [&quot;allow/acme/accounts/read&quot;]
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                               ^ edit does not equal read
 </span></code></pre></div>
 <h2 id="deny-break">Deny Break</h2>
 <p>If a scope matches a deny rule, we instantly return false.
 We do not check until the end of our loops in this case.
 If any error is present after the deny rule match, it will not be found or returned.</p>
-<div class="language-text highlight"><span class="filename">Deny Break</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>action = [&quot;accounts/edit&quot;]
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>actor  = [&quot;deny/accounts/*&quot;,&quot;allow/blogs/*&quot;]
+<div class="language-text highlight"><span class="filename">Deny Break</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopes = [&quot;accounts/edit&quot;]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>rules  = [&quot;deny/accounts/*&quot;,&quot;allow/blogs/*&quot;]
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                ^ matches    ^ skipped
 </span></code></pre></div>
 <h2 id="allow-skips">Allow skips</h2>
 <p>If an allow rule is matched early in the loop, we can skip trying to match any future
 allow rules as we already matched one.
 Thus, it is possible to not have errors returned if they are part of rules we skipped.</p>
-<div class="language-text highlight"><span class="filename">Allow Skip</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>action = [&quot;accounts/edit&quot;]
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>actor  = [&quot;allow/accounts/*&quot;,&quot;allow/blogs/*&quot;]
+<div class="language-text highlight"><span class="filename">Allow Skip</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scopes = [&quot;accounts/edit&quot;]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>rules  = [&quot;allow/accounts/*&quot;,&quot;allow/blogs/*&quot;]
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>           ^ matches          ^ skipped
 </span></code></pre></div>
 <h2 id="flowchart">Flowchart</h2>
 <pre class="mermaid"><code>flowchart TD
-    AR[Actor Rules]
+    AR[rules Rules]
     RS[Required Scopes]
     D[All Checked]
     M{Is Match}
@@ -941,7 +941,7 @@ Thus, it is possible to not have errors returned if they are part of rules we sk
     F((return false))
 
     AR--&gt;|For each Required Scope|RS
-    RS--&gt;|Does the required scope\nmatch actor rule?|M
+    RS--&gt;|Does the required scope\nmatch rules rule?|M
     M--&gt;|Is Deny Rule|DR
     M--&gt;|Is Allow Rule|AlR
     DR--&gt;F
