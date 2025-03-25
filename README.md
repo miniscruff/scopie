@@ -6,13 +6,13 @@ Aimed at being easy to use and implement without overtaking other parts of your 
 ## Features
 
 * You own the data
-* Per user and per feature level access management
+* Per user and per feature access management
 
 ## Implementations
 
 * [Go](https://github.com/miniscruff/scopie-go)
 * [Javascript](https://github.com/miniscruff/scopie-js)
-* [Python](https://github.com/miniscruff/scopie-py) ( in development )
+* [Python](https://github.com/miniscruff/scopie-py)
 
 A language agnostic set of scenarios can be found in the [scenarios.json](./scenarios.json) file.
 
