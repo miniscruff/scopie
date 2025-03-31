@@ -1,7 +1,7 @@
 window.addEventListener("load", async function() {
   console.log("scopie playground initializing")
 
-  window.scopie = await import("/static/scopie.browser.min.v0.3.0.js");
+  window.scopie = await import("/static/scopie.browser.min.v0.4.0.js");
 
   window.scopesInput = document.getElementById("scopes-input");
   window.scopesError = document.getElementById("scopes-error");
