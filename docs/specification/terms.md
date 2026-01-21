@@ -19,8 +19,9 @@ one|two|three
 **
 ```
 
-## Permission
-One or more blocks, joined by a slash (`/`).
+## Action
+One or more blocks, joined by a slash (`/`) indicating
+what the user is attempting to do.
 
 ``` title="Permission examples"
 alpha/beta/omega
@@ -29,11 +30,11 @@ accounts/**
 ```
 
 ## Grant
-Whether or not we are allowed to do the action.
+Whether or not the user is allowed to do the action.
 Either the literal string `allow` or `deny`.
 
-## Action
-Permission and literal blocks separated by slashes (`/`).
+## Permission
+Permission are literal blocks separated by slashes (`/`).
 Colons are used to separate the grant from the blocks.
 
 ``` title="Action examples"
