@@ -169,3 +169,22 @@ accounts/create
 permission was empty
 ```
 
+
+## 107
+
+Permission does not start with a grant
+
+
+
+```title="Valid"
+allow:accounts/create
+```
+
+```title="Invalid"
+not-allow:accounts/create
+denies:root/all
+```
+
+```title="Message format"
+permission does not start with a grant
+```

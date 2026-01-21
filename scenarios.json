@@ -164,7 +164,7 @@
       "id": "empty actions array",
       "permissions": ["allow:accounts/read"],
       "actions": [],
-      "error": "scopie-106 in action: action was empty"
+      "error": "scopie-106 in action: actions was empty"
     },
     {
       "id": "empty actions permission",
@@ -173,7 +173,7 @@
       "error": "scopie-106 in action: action was empty"
     }
   ],
-  "validateActionTests": [
+  "validateActionsTests": [
     {
       "id": "simple action",
       "actions": ["blog/read"]
@@ -235,6 +235,11 @@
       "permissions": ["allow:blog/*/@region/primary|secondary/**"]
     },
     {
+      "id": "invalid start",
+      "permissions": ["maybe:blog/create"],
+      "error": "scopie-107: permission does not start with a grant"
+    },
+    {
       "id": "invalid special character",
       "permissions": ["allow:blog/+15"],
       "error": "scopie-100: invalid character '+'"
@@ -275,24 +280,14 @@
       "error": "scopie-105: super wildcard not in the last block"
     },
     {
-      "id": "empty action",
+      "id": "empty permission",
       "permissions": [""],
-      "error": "scopie-106: action or permission was empty"
+      "error": "scopie-106: permission was empty"
     },
     {
-      "id": "permission then action",
-      "permissions": ["allow:blog/**", "blog/read"],
-      "error": "scopie-107: inconsistent array of actions and permissions"
-    },
-    {
-      "id": "action then permission",
-      "permissions": ["blog/**", "allow:blog/read"],
-      "error": "scopie-107: inconsistent array of actions and permissions"
-    },
-    {
-      "id": "empty action at second index",
+      "id": "empty permission at second index",
       "permissions": ["allow:blog/**", ""],
-      "error": "scopie-106: action or permission was empty"
+      "error": "scopie-106: permission was empty"
     }
   ],
   "benchmarks": [
