@@ -171,6 +171,12 @@
       "permissions": ["allow:accounts/read"],
       "actions": [""],
       "error": "scopie-106 in action: action was empty"
+    },
+    {
+      "id": "permission does not start with grant",
+      "permissions": ["maybe:accounts/read"],
+      "actions": ["accounts/read"],
+      "error": "scopie-107: permission does not start with a grant"
     }
   ],
   "validateActionsTests": [
