@@ -24,7 +24,7 @@ We run half, quarterly, monthly and weekly reports.
 
 **Format**
 
-For the above reasons we are going to specify our scopes and rules as:
+For the above reasons we are going to specify our permissions and actions as:
 ```
 reports/<duration>/<action>
 ```
@@ -66,17 +66,17 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     const users = {
         elsa: {
-            rules: ["allow/blog/create|update"],
+            actions: ["allow/blog/create|update"],
         },
         bella: {
-            rules: ["allow/blog/create"],
+            actions: ["allow/blog/create"],
         },
     ]
     const blogPosts = {}
 
     function createBlog(username, blogSlug, blogContent) {
         const user = users[username]
-        if (isAllowed(["blog/create"], user.rules)) {
+        if (isAllowed(["blog/create"], user.actions)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -86,7 +86,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     function updateBlog(username, blogSlug, blogContent) {
         const user = users[username]
-        if (isAllowed(["blog/update"], user.rules)) {
+        if (isAllowed(["blog/update"], user.actions)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -101,7 +101,7 @@ See [implementations](./implementations.md) for more complete guides per languag
     import { isAllowed } from "scopie";
 
     type User = {
-        rules: Array<string>;
+        actions: Array<string>;
     };
 
     type BlogPost = {
@@ -119,10 +119,10 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     const users: UserStore = {
         elsa: {
-            rules: ["allow/blog/create|update"],
+            actions: ["allow/blog/create|update"],
         },
         bella: {
-            rules: ["allow/blog/create"],
+            actions: ["allow/blog/create"],
         },
     }
 
@@ -130,7 +130,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     function createBlog(username: string, blogSlug: string, blogContent: string) {
         const user = users[username]
-        if (isAllowed(["blog/create"], user.rules)) {
+        if (isAllowed(["blog/create"], user.actions)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -140,7 +140,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     function updateBlog(username: string, blogSlug: string, blogContent: string) {
         const user = users[username]
-        if (isAllowed(["blog/update"], user.rules)) {
+        if (isAllowed(["blog/update"], user.actions)) {
             blogPosts[blogSlug] = {
                 author: user,
                 content: blogContent,
@@ -158,7 +158,7 @@ See [implementations](./implementations.md) for more complete guides per languag
     )
 
     type User struct {
-        Rules []string
+        Actions []string
     }
 
     type BlogPost struct {
@@ -168,17 +168,17 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     var userStore map[string]User = map[string]User{
         "elsa": User{
-            Rules: []string{"allow/blog/create|update"},
+            Actions: []string{"allow/blog/create|update"},
         },
         "belle": User{
-            Rules: []string{"allow/blog/create"},
+            Actions: []string{"allow/blog/create"},
         },
     }
     var blogStore map[string]BlogPost = map[string]BlogPost{}
 
     func createBlog(username, blogSlug, blogContent string) error {
         user := users[username]
-        allowed, err := scopie.IsAllowed([]string{"blog/create"}, user.Rules, nil)
+        allowed, err := scopie.IsAllowed([]string{"blog/create"}, user.Actions, nil)
         if err != nil {
             return err
         }
@@ -196,7 +196,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     func updateBlog(username, blogSlug, blogContent string) error {
         user := users[username]
-        allowed, err := scopie.IsAllowed([]string{"blog/update"}, user.Rules, nil) {
+        allowed, err := scopie.IsAllowed([]string{"blog/update"}, user.Actions, nil) {
         if err != nil {
             return err
         }
@@ -220,10 +220,10 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     users = {
         "elsa": {
-            "rules": ["allow/blog/create|update"],
+            "actions": ["allow/blog/create|update"],
         },
         "bella": {
-            "rules": ["allow/blog/create"],
+            "actions": ["allow/blog/create"],
         },
     }
 
@@ -231,7 +231,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     def create_blog(username, blogSlug, blogContent):
         user = users[username]
-        if is_allowed(["blog/create"], user["rules"]):
+        if is_allowed(["blog/create"], user["actions"]):
             blogPosts[blogSlug] = {
                 "author": user,
                 "content": blogContent,
@@ -239,7 +239,7 @@ See [implementations](./implementations.md) for more complete guides per languag
 
     def update_blog(username, blogSlug, blogContent):
         user = users[username]
-        if is_allowed(["blog/update"], user["rules"]):
+        if is_allowed(["blog/update"], user["actions"]):
             blogPosts[blogSlug] = {
                 "author": user,
                 "content": blogContent,

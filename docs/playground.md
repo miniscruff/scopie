@@ -7,22 +7,22 @@ title: Scopie playground
 
 # Playground
 
-Try out scopes and rules in scopie to determine if the actor would be allowed to run that action.
+Try out permissions and actions in scopie to determine if the user would be allowed to run that action.
 
-## Scopes
+## permissions
 
-<textarea class="md-typeset" id="scopes-input" rows="5" cols="42" wrap="off">
+<textarea class="md-typeset" id="permissions-input" rows="5" cols="42" wrap="off">
 blog/create
 </textarea>
-<div id="scopes-error">Valid</div>
+<div id="permissions-error">Valid</div>
 
-## Rules
+## Actions
 
-<textarea class="md-typeset" id="rules-input" rows="5" cols="42" wrap="off">
+<textarea class="md-typeset" id="actions-input" rows="5" cols="42" wrap="off">
 allow/blog/create|update
 allow/accounts/read
 </textarea>
-<div id="rules-error">Valid</div>
+<div id="actions-error">Valid</div>
 
 ## Result
 <div id="is-allowed">Is Allowed</div>

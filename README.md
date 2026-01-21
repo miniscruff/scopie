@@ -27,7 +27,7 @@ We run half, quarterly, monthly and weekly reports.
 
 **Format**
 
-For the above reasons we are going to specify our scopes and rules as:
+For the above reasons we are going to specify our permissions and actions as:
 ```
 reports/<duration>/<action>
 ```

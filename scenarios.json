@@ -3,50 +3,50 @@
   "isAllowedTests": [
     {
       "id": "basic allow match",
-      "rules": ["allow/blog/read"],
-      "scopes": ["blog/read"],
+      "actions": ["allow:blog/read"],
+      "permissions": ["blog/read"],
       "result": true
     },
     {
       "id": "basic deny match",
-      "rules": ["deny/blog/read"],
-      "scopes": ["blog/read"],
+      "actions": ["deny:blog/read"],
+      "permissions": ["blog/read"],
       "result": false
     },
     {
       "id": "no match is deny",
-      "rules": ["deny/blog/read"],
-      "scopes": ["accounts/read"],
+      "actions": ["deny:blog/read"],
+      "permissions": ["accounts/read"],
       "result": false
     },
     {
       "id": "no match is deny 2",
-      "rules": ["deny/blog/read"],
-      "scopes": ["blog/reader"],
+      "actions": ["deny:blog/read"],
+      "permissions": ["blog/reader"],
       "result": false
     },
     {
-      "id": "rules shorter then scopes",
-      "rules": ["allow/blog/public"],
-      "scopes": ["blog/public/read"],
+      "id": "actions shorter then permissions",
+      "actions": ["allow:blog/public"],
+      "permissions": ["blog/public/read"],
       "result": false
     },
     {
-      "id": "scopes shorter then rules",
-      "rules": ["allow/blog/public/read"],
-      "scopes": ["blog/public"],
+      "id": "permissions shorter then actions",
+      "actions": ["allow:blog/public/read"],
+      "permissions": ["blog/public"],
       "result": false
     },
     {
       "id": "match with array",
-      "rules": ["allow/pzazz/jazzy/fuzzy|folky|buzzy"],
-      "scopes": ["pzazz/jazzy/buzzy"],
+      "actions": ["allow:pzazz/jazzy/fuzzy|folky|buzzy"],
+      "permissions": ["pzazz/jazzy/buzzy"],
       "result": true
     },
     {
       "id": "match with variable",
-      "rules": ["allow/quick/zappy/@name01"],
-      "scopes": ["quick/zappy/value01"],
+      "actions": ["allow:quick/zappy/@name01"],
+      "permissions": ["quick/zappy/value01"],
       "variables": {
           "name01": "value01"
       },
@@ -54,80 +54,80 @@
     },
     {
       "id": "match with wildcard",
-      "rules": ["allow/alamo/aline/*"],
-      "scopes": ["alamo/aline/anchor"],
+      "actions": ["allow:alamo/aline/*"],
+      "permissions": ["alamo/aline/anchor"],
       "variables": {
           "name01": "value01"
       },
       "result": true
     },
     {
-      "id": "rules rule has more wildcards then scopes rule",
-      "rules": ["allow/*/*/*"],
-      "scopes": ["alamo/anchor"],
+      "id": "actions with more wildcards then permissions",
+      "actions": ["allow:*/*/*"],
+      "permissions": ["alamo/anchor"],
       "result": false
     },
     {
       "id": "match with super wildcard",
-      "rules": ["allow/antic/**"],
-      "scopes": ["antic/apeek/antre"],
+      "actions": ["allow:antic/**"],
+      "permissions": ["antic/apeek/antre"],
       "variables": {
           "name01": "value01"
       },
       "result": true
     },
     {
-      "id": "invalid special character in rules",
-      "rules": ["allow/blog/:155"],
-      "scopes": ["blog/read"],
-      "error": "scopie-100 in rule: invalid character ':'"
+      "id": "invalid special character in actions",
+      "actions": ["allow:blog/:155"],
+      "permissions": ["blog/read"],
+      "error": "scopie-100 in action: invalid character ':'"
     },
     {
-      "id": "invalid special character in scopes",
-      "rules": ["allow/blog/read"],
-      "scopes": ["blog/:155"],
-      "error": "scopie-100 in scope: invalid character ':'"
+      "id": "invalid special character in permissions",
+      "actions": ["allow:blog/read"],
+      "permissions": ["blog/:155"],
+      "error": "scopie-100 in permission invalid character ':'"
     },
     {
       "id": "variable inside an array group",
-      "rules": ["allow/blog/read|@group|write"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/read|@group|write"],
+      "permissions": ["blog/exec"],
       "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "variable and the end of an array group",
-      "rules": ["allow/blog/read|write|@group"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/read|write|@group"],
+      "permissions": ["blog/exec"],
       "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "wildcard inside an array group",
-      "rules": ["allow/blog/read|*|write"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/read|*|write"],
+      "permissions": ["blog/exec"],
       "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "wildcard at the end of an array group",
-      "rules": ["allow/blog/read|write|*"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/read|write|*"],
+      "permissions": ["blog/exec"],
       "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "super wildcard inside an array group",
-      "rules": ["allow/blog/read|**|write"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/read|**|write"],
+      "permissions": ["blog/exec"],
       "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "super wildcard at the end of an array group",
-      "rules": ["allow/blog/read|write|**"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/read|write|**"],
+      "permissions": ["blog/exec"],
       "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "variable not found",
-      "rules": ["allow/blog/@group","allow/blog/read"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/@group","allow:blog/read"],
+      "permissions": ["blog/exec"],
       "variables": {
           "name01": "value01"
       },
@@ -135,8 +135,8 @@
     },
     {
       "id": "variable not found 2",
-      "rules": ["allow/blog/@group"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/@group"],
+      "permissions": ["blog/exec"],
       "variables": {
           "name01": "value01"
       },
@@ -144,186 +144,186 @@
     },
     {
       "id": "super wildcard not in the last block",
-      "rules": ["allow/blog/**/create"],
-      "scopes": ["blog/exec"],
+      "actions": ["allow:blog/**/create"],
+      "permissions": ["blog/exec"],
       "error": "scopie-105: super wildcard not in the last block"
     },
     {
-      "id": "empty rules array",
-      "rules": [],
-      "scopes": ["blog/exec"],
+      "id": "empty actions array",
+      "actions": [],
+      "permissions": ["blog/exec"],
       "result": false
     },
     {
-      "id": "empty rules rule",
-      "rules": [""],
-      "scopes": ["blog/exec"],
-      "error": "scopie-106 in rule: rule was empty"
+      "id": "empty action",
+      "actions": [""],
+      "permissions": ["blog/exec"],
+      "error": "scopie-106 in action: action was empty"
     },
     {
-      "id": "empty scopes array",
-      "rules": ["allow/accounts/read"],
-      "scopes": [],
-      "error": "scopie-106 in scope: scopes was empty"
+      "id": "empty permissions array",
+      "actions": ["allow:accounts/read"],
+      "permissions": [],
+      "error": "scopie-106 in permission permissions was empty"
     },
     {
-      "id": "empty scopes rule",
-      "rules": ["allow/accounts/read"],
-      "scopes": [""],
-      "error": "scopie-106 in scope: scope was empty"
+      "id": "empty permissions action",
+      "actions": ["allow:accounts/read"],
+      "permissions": [""],
+      "error": "scopie-106 in permission: permission was empty"
     }
   ],
-  "validateScopesTests": [
+  "validatepermissionsTests": [
     {
-      "id": "simple scope",
-      "scopes": ["allow/blog/read"]
+      "id": "simple permission",
+      "permissions": ["allow:blog/read"]
     },
     {
       "id": "with wildcard",
-      "scopes": ["allow/blog/*/read"]
+      "permissions": ["allow:blog/*/read"]
     },
     {
       "id": "with super wildcard",
-      "scopes": ["allow/blog/**"]
+      "permissions": ["allow:blog/**"]
     },
     {
       "id": "with array",
-      "scopes": ["allow/blog/primary|secondary|third/read"]
+      "permissions": ["allow:blog/primary|secondary|third/read"]
     },
     {
       "id": "with variable",
-      "scopes": ["allow/blog/@owner/read"]
+      "permissions": ["allow:blog/@owner/read"]
     },
     {
       "id": "combination",
-      "scopes": ["allow/blog/*/@region/primary|secondary/**"]
+      "permissions": ["allow:blog/*/@region/primary|secondary/**"]
     },
     {
       "id": "invalid special character",
-      "scopes": ["allow/blog/:15"],
+      "permissions": ["allow:blog/:15"],
       "error": "scopie-100: invalid character ':'"
     },
     {
       "id": "variable inside an array group",
-      "scopes": ["allow/blog/read|@group|write"],
+      "permissions": ["allow:blog/read|@group|write"],
       "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "variable and the end of an array group",
-      "scopes": ["allow/blog/read|write|@group"],
+      "permissions": ["allow:blog/read|write|@group"],
       "error": "scopie-101: variable 'group' found in array block"
     },
     {
       "id": "wildcard inside an array group",
-      "scopes": ["allow/blog/read|*|write"],
+      "permissions": ["allow:blog/read|*|write"],
       "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "wildcard at the end of an array group",
-      "scopes": ["allow/blog/read|write|*"],
+      "permissions": ["allow:blog/read|write|*"],
       "error": "scopie-102: wildcard found in array block"
     },
     {
       "id": "super wildcard inside an array group",
-      "scopes": ["allow/blog/read|**|write"],
+      "permissions": ["allow:blog/read|**|write"],
       "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "super wildcard at the end of an array group",
-      "scopes": ["allow/blog/read|write|**"],
+      "permissions": ["allow:blog/read|write|**"],
       "error": "scopie-103: super wildcard found in array block"
     },
     {
       "id": "super wildcard not in the last block",
-      "scopes": ["allow/blog/**/create"],
+      "permissions": ["allow:blog/**/create"],
       "error": "scopie-105: super wildcard not in the last block"
     },
     {
-      "id": "empty scope",
-      "scopes": [""],
-      "error": "scopie-106: scope or rule was empty"
+      "id": "empty permission",
+      "permissions": [""],
+      "error": "scopie-106: permission or action was empty"
     },
     {
-      "id": "rule then scope",
-      "scopes": ["allow/blog/**", "blog/read"],
-      "error": "scopie-107: inconsistent array of scopes and rules"
+      "id": "action then permission",
+      "permissions": ["allow:blog/**", "blog/read"],
+      "error": "scopie-107: inconsistent array of permissions and actions"
     },
     {
-      "id": "scope then rule",
-      "scopes": ["blog/**", "allow/blog/read"],
-      "error": "scopie-107: inconsistent array of scopes and rules"
+      "id": "permission then action",
+      "permissions": ["blog/**", "allow:blog/read"],
+      "error": "scopie-107: inconsistent array of permissions and actions"
     },
     {
-      "id": "empty scope at second index",
-      "scopes": ["allow/blog/**", ""],
-      "error": "scopie-106: scope or rule was empty"
+      "id": "empty permission at second index",
+      "permissions": ["allow:blog/**", ""],
+      "error": "scopie-106: permission or action was empty"
     }
   ],
   "benchmarks": [
     {
-      "id": "allow,1rules,1rule,1block1length",
-      "rules": ["allow/A"],
-      "scopes": ["A"],
+      "id": "allow,1actions,1action,1block1length",
+      "actions": ["allow:A"],
+      "permissions": ["A"],
       "result": true
     },
     {
-      "id": "deny,1rules,1rule,1block1length",
-      "rules": ["deny/A"],
-      "scopes": ["A"],
+      "id": "deny,1actions,1action,1block1length",
+      "actions": ["deny:A"],
+      "permissions": ["A"],
       "result": false
     },
     {
-      "id": "allow,5rules,3scopes,3blocks10length,best",
-      "rules": ["allow/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "allow/buzzworthy/bemuzzling/jazzercise"],
-      "scopes": ["razzmatazz/vajazzling/buckjumper", "buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging"],
+      "id": "allow,5actions,3permissions,3blocks10length,best",
+      "actions": ["allow:razzmatazz/vajazzling/buckjumper", "allow:blackjacks/unpuzzling/unmuzzling", "allow:jumboizing/embezzling/buckjumped", "allow:whizzbangs/squeezebox/puzzlingly", "allow:buzzworthy/bemuzzling/jazzercise"],
+      "permissions": ["razzmatazz/vajazzling/buckjumper", "buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging"],
       "result": true
     },
     {
-      "id": "allow,5rules,3scopes,3blocks10length,worst",
-      "rules": ["allow/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "allow/buzzworthy/bemuzzling/jazzercise"],
-      "scopes": ["buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging", "buzzworthy/bemuzzling/jazzercise"],
+      "id": "allow,5actions,3permissions,3blocks10length,worst",
+      "actions": ["allow:razzmatazz/vajazzling/buckjumper", "allow:blackjacks/unpuzzling/unmuzzling", "allow:jumboizing/embezzling/buckjumped", "allow:whizzbangs/squeezebox/puzzlingly", "allow:buzzworthy/bemuzzling/jazzercise"],
+      "permissions": ["buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging", "buzzworthy/bemuzzling/jazzercise"],
       "result": true
     },
     {
-      "id": "deny,5rules,3scopes,3blocks10length,best",
-      "rules": ["deny/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "allow/buzzworthy/bemuzzling/jazzercise"],
-      "scopes": ["razzmatazz/vajazzling/buckjumper", "buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging"],
+      "id": "deny,5actions,3permissions,3blocks10length,best",
+      "actions": ["deny:razzmatazz/vajazzling/buckjumper", "allow:blackjacks/unpuzzling/unmuzzling", "allow:jumboizing/embezzling/buckjumped", "allow:whizzbangs/squeezebox/puzzlingly", "allow:buzzworthy/bemuzzling/jazzercise"],
+      "permissions": ["razzmatazz/vajazzling/buckjumper", "buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging"],
       "result": false
     },
     {
-      "id": "deny,5rules,3scopes,3blocks10length,worst",
-      "rules": ["allow/razzmatazz/vajazzling/buckjumper", "allow/blackjacks/unpuzzling/unmuzzling", "allow/jumboizing/embezzling/buckjumped", "allow/whizzbangs/squeezebox/puzzlingly", "deny/buzzworthy/bemuzzling/jazzercise"],
-      "scopes": ["buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging", "buzzworthy/bemuzzling/jazzercise"],
+      "id": "deny,5actions,3permissions,3blocks10length,worst",
+      "actions": ["allow:razzmatazz/vajazzling/buckjumper", "allow:blackjacks/unpuzzling/unmuzzling", "allow:jumboizing/embezzling/buckjumped", "allow:whizzbangs/squeezebox/puzzlingly", "deny:buzzworthy/bemuzzling/jazzercise"],
+      "permissions": ["buzzphase/dizzingly/puzzlement", "schemozzle/scuzzballs/zigzagging", "buzzworthy/bemuzzling/jazzercise"],
       "result": false
     },
     {
-      "id": "allow,2rules,1rule,3block5length,3array,best",
-      "rules": ["allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
-      "scopes": ["pzazz/jazzy/buzzy"],
+      "id": "allow,2actions,1action,3block5length,3array,best",
+      "actions": ["allow:pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow:whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "permissions": ["pzazz/jazzy/buzzy"],
       "result": true
     },
     {
-      "id": "allow,2rules,1rule,3block5length,3array,worst",
-      "rules": ["allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
-      "scopes": ["abuzz/frizz/mezzo"],
+      "id": "allow,2actions,1action,3block5length,3array,worst",
+      "actions": ["allow:pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow:whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "permissions": ["abuzz/frizz/mezzo"],
       "result": true
     },
     {
-      "id": "deny,2rules,1rule,3block5length,3array,best",
-      "rules": ["deny/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
-      "scopes": ["pzazz/jazzy/buzzy"],
+      "id": "deny,2actions,1action,3block5length,3array,best",
+      "actions": ["deny:pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "allow:whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "permissions": ["pzazz/jazzy/buzzy"],
       "result": false
     },
     {
-      "id": "deny,2rules,1rule,3block5length,3array,worst",
-      "rules": ["allow/pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "deny/whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
-      "scopes": ["abuzz/frizz/mezzo"],
+      "id": "deny,2actions,1action,3block5length,3array,worst",
+      "actions": ["allow:pzazz|bezzy|bizzy/jazzy|fizzy|pozzy/buzzy|fuzzy|muzzy", "deny:whizz|zhuzh|abuzz/scuzz|dizzy|frizz/huzza|mezza|mezzo"],
+      "permissions": ["abuzz/frizz/mezzo"],
       "result": false
     },
     {
-      "id": "allow,3rules,1rule,3block5length,3variables,best",
-      "rules": ["allow/@name01/@name02/@name03", "allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack"],
-      "scopes": ["value01/value02/value03"],
+      "id": "allow,3actions,1action,3block5length,3variables,best",
+      "actions": ["allow:@name01/@name02/@name03", "allow:jimmy/jimpy/junky", "allow:mujik/muzak/quack"],
+      "permissions": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -332,9 +332,9 @@
       "result": true
     },
     {
-      "id": "allow,3rules,1rule,3block5length,3variables,worst",
-      "rules": ["allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack", "allow/@name01/@name02/@name03"],
-      "scopes": ["value01/value02/value03"],
+      "id": "allow,3actions,1action,3block5length,3variables,worst",
+      "actions": ["allow:jimmy/jimpy/junky", "allow:mujik/muzak/quack", "allow:@name01/@name02/@name03"],
+      "permissions": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -343,9 +343,9 @@
       "result": true
     },
     {
-      "id": "deny,2rules,1rule,3block5length,3variables,best",
-      "rules": ["deny/@name01/@name02/@name03", "allow/quick/zappy/zippy", "allow/jacks/jocko/jugum"],
-      "scopes": ["value01/value02/value03"],
+      "id": "deny,2actions,1action,3block5length,3variables,best",
+      "actions": ["deny:@name01/@name02/@name03", "allow:quick/zappy/zippy", "allow:jacks/jocko/jugum"],
+      "permissions": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -354,9 +354,9 @@
       "result": false
     },
     {
-      "id": "deny,2rules,1rule,3block5length,3variables,worst",
-      "rules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/@name01/@name02/@name03"],
-      "scopes": ["value01/value02/value03"],
+      "id": "deny,2actions,1action,3block5length,3variables,worst",
+      "actions": ["allow:quick/zappy/zippy", "allow:jacks/jocko/jugum", "deny:@name01/@name02/@name03"],
+      "permissions": ["value01/value02/value03"],
       "variables": {
           "name01": "value01",
           "name02": "value02",
@@ -365,51 +365,51 @@
       "result": false
     },
     {
-      "id": "allow,3rules,1rule,3block5length,wildcard,best",
-      "rules": ["allow/jivey/*/juicy", "allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack"],
-      "scopes": ["jivey/juked/juicy"],
+      "id": "allow,3actions,1action,3block5length,wildcard,best",
+      "actions": ["allow:jivey/*/juicy", "allow:jimmy/jimpy/junky", "allow:mujik/muzak/quack"],
+      "permissions": ["jivey/juked/juicy"],
       "result": true
     },
     {
-      "id": "allow,3rules,1rule,3block5length,wildcard,worst",
-      "rules": ["allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack", "allow/juffs/*/jaggy"],
-      "scopes": ["juffs/jokey/jaggy"],
+      "id": "allow,3actions,1action,3block5length,wildcard,worst",
+      "actions": ["allow:jimmy/jimpy/junky", "allow:mujik/muzak/quack", "allow:juffs/*/jaggy"],
+      "permissions": ["juffs/jokey/jaggy"],
       "result": true
     },
     {
-      "id": "deny,2rules,1rule,3block5length,wildcard,best",
-      "rules": ["deny/khazi/*/pujah", "allow/quick/zappy/zippy", "allow/jacks/jocko/jugum"],
-      "scopes": ["khazi/zincy/pujah"],
+      "id": "deny,2actions,1action,3block5length,wildcard,best",
+      "actions": ["deny:khazi/*/pujah", "allow:quick/zappy/zippy", "allow:jacks/jocko/jugum"],
+      "permissions": ["khazi/zincy/pujah"],
       "result": false
     },
     {
-      "id": "deny,2rules,1rule,3block5length,wildcard,worst",
-      "rules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/zilch/*/kanzu"],
-      "scopes": ["zilch/karzy/kanzu"],
+      "id": "deny,2actions,1action,3block5length,wildcard,worst",
+      "actions": ["allow:quick/zappy/zippy", "allow:jacks/jocko/jugum", "deny:zilch/*/kanzu"],
+      "permissions": ["zilch/karzy/kanzu"],
       "result": false
     },
     {
-      "id": "allow,3rules,1rule,3block5length,superwildcard,best",
-      "rules": ["allow/jivey/**", "allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack"],
-      "scopes": ["jivey/juked/juicy"],
+      "id": "allow,3actions,1action,3block5length,superwildcard,best",
+      "actions": ["allow:jivey/**", "allow:jimmy/jimpy/junky", "allow:mujik/muzak/quack"],
+      "permissions": ["jivey/juked/juicy"],
       "result": true
     },
     {
-      "id": "allow,3rules,1rule,3block5length,superwildcard,worst",
-      "rules": ["allow/jimmy/jimpy/junky", "allow/mujik/muzak/quack", "allow/juffs/**"],
-      "scopes": ["juffs/jokey/jaggy"],
+      "id": "allow,3actions,1action,3block5length,superwildcard,worst",
+      "actions": ["allow:jimmy/jimpy/junky", "allow:mujik/muzak/quack", "allow:juffs/**"],
+      "permissions": ["juffs/jokey/jaggy"],
       "result": true
     },
     {
-      "id": "deny,2rules,1rule,3block5length,superwildcard,best",
-      "rules": ["deny/khazi/**", "allow/quick/zappy/zippy", "allow/jacks/jocko/jugum"],
-      "scopes": ["khazi/zincy/pujah"],
+      "id": "deny,2actions,1action,3block5length,superwildcard,best",
+      "actions": ["deny:khazi/**", "allow:quick/zappy/zippy", "allow:jacks/jocko/jugum"],
+      "permissions": ["khazi/zincy/pujah"],
       "result": false
     },
     {
-      "id": "deny,2rules,1rule,3block5length,superwildcard,worst",
-      "rules": ["allow/quick/zappy/zippy", "allow/jacks/jocko/jugum", "deny/zilch/**"],
-      "scopes": ["zilch/karzy/kanzu"],
+      "id": "deny,2actions,1action,3block5length,superwildcard,worst",
+      "actions": ["allow:quick/zappy/zippy", "allow:jacks/jocko/jugum", "deny:zilch/**"],
+      "permissions": ["zilch/karzy/kanzu"],
       "result": false
     }
   ]
