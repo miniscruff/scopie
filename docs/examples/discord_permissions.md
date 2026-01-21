@@ -10,9 +10,9 @@ of control but using scopie and permission based actions.
 
 Not all discord permissions are listed below.
 
-## Server permissions
+## Server actions
 
-Our structure for discord permissions is `(allow or deny):server/<server_id>/<group>/<action>`.
+Our structure for discord permissions is `(allow or deny):server/<server_id>/<group>/<verb>`.
 This is to allow us to define permissions across different servers while allowing us to
 also create different namespaces for permissions separate from servers later.
 It is also possible to separate server permissions completely from other servers, rather
@@ -38,7 +38,7 @@ then trying to compare the server id within the permission.
 | messages | files | Able to send files in messages
 | messages | reactions | Able to react to messages
 
-## Example permissions
+## Example Permissions
 
 Here are a small list of examples permissions.
 Note that not all of these are practical and would be used in a real scenario.

@@ -40,7 +40,7 @@ include variables from the respective permission or action.
 ## 100
 Invalid character.
 
-Scopie only allows letters, numbers, underscore `_`  and dashes `-` in permission blocks, any other character is invalid.
+Scopie only allows letters, numbers, underscore `_`  and dashes `-` in literal blocks, any other character is invalid.
 
 ```title="Valid"
 blog/15/create

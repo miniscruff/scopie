@@ -20,13 +20,13 @@ one|two|three
 ```
 
 ## Action
-One or more blocks, joined by a slash (`/`) indicating
+One or more literal blocks, joined by a slash (`/`) indicating
 what the user is attempting to do.
 
 ``` title="Permission examples"
 alpha/beta/omega
-blog/@user/read|write
-accounts/**
+bucket/images/upload
+account/root/view
 ```
 
 ## Grant
@@ -34,12 +34,15 @@ Whether or not the user is allowed to do the action.
 Either the literal string `allow` or `deny`.
 
 ## Permission
-Permission are literal blocks separated by slashes (`/`).
+Permissions are blocks separated by slashes (`/`).
 Colons are used to separate the grant from the blocks.
+Permissions are attached to users.
 
 ``` title="Action examples"
 allow:bucket/images/upload
-deny:iam_accounts/edit
+deny:account/**
+allow:blog/@user/read|write
+allow:accounts/**
 ```
 
 ## Keywords
