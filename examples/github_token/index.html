@@ -801,10 +801,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#repository-scopes" class="md-nav__link">
+  <a href="#repository-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Repository Scopes
+        Repository permissions
       
     </span>
   </a>
@@ -823,15 +823,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-scopes" class="md-nav__link">
+  <a href="#example-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example scopes
+        Example permissions
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example scopes">
+    <nav class="md-nav" aria-label="Example permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -970,10 +970,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#repository-scopes" class="md-nav__link">
+  <a href="#repository-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Repository Scopes
+        Repository permissions
       
     </span>
   </a>
@@ -992,15 +992,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-scopes" class="md-nav__link">
+  <a href="#example-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example scopes
+        Example permissions
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example scopes">
+    <nav class="md-nav" aria-label="Example permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1064,10 +1064,10 @@
 <h1 id="github-access-tokens">GitHub Access Tokens</h1>
 <p>If you ever needed to create an <a href="https://github.com/settings/tokens/new">access token for GitHub</a>
 this example attempts to match the same level of control using scopie.
-For brevity reasons, only the scopes related to repositories are listed.</p>
-<h2 id="repository-scopes">Repository Scopes</h2>
-<p>Our structure for repository scopes is <code>(allow or deny)/repo/&lt;org&gt;/&lt;repo&gt;/&lt;group&gt;/&lt;action&gt;</code>.
-This allows us to create organization, user or other scopes in a separate top level namespace,
+For brevity reasons, only the permissions related to repositories are listed.</p>
+<h2 id="repository-permissions">Repository permissions</h2>
+<p>Our structure for repository permissions is <code>(allow or deny):repo/&lt;org&gt;/&lt;repo&gt;/&lt;group&gt;/&lt;action&gt;</code>.
+This allows us to create organization, user or other permissions in a separate top level namespace,
 such that wildcards and super wildcards are grouped at the top level.</p>
 <table>
 <thead>
@@ -1170,91 +1170,91 @@ such that wildcards and super wildcards are grouped at the top level.</p>
 with full control over that group.
 The equilivent to that in scopie is using wildcards.</p>
 <p>For example, full control over the "discussion" actions, would be:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>allow/repo/&lt;org&gt;/&lt;repo&gt;/discussions/*
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>allow:repo/&lt;org&gt;/&lt;repo&gt;/discussions/*
 </span></code></pre></div></p>
-<h2 id="example-scopes">Example scopes</h2>
-<p>Here are a small list of examples scopes.
+<h2 id="example-permissions">Example permissions</h2>
+<p>Here are a small list of examples permissions.
 Not all of these would make sense in practice.</p>
 <h3 id="super-wildcards">Super wildcards</h3>
-<p>These scopes relate to using super wildcards for generalized access.</p>
+<p>These permissions relate to using super wildcards for generalized access.</p>
 <table>
 <thead>
 <tr>
-<th>Scope</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>allow/**</code></td>
+<td><code>allow:**</code></td>
 <td>Access to everything</td>
 </tr>
 <tr>
-<td><code>allow/repo/**</code></td>
+<td><code>allow:repo/**</code></td>
 <td>Access to everything under any organization</td>
 </tr>
 <tr>
-<td><code>allow/repo/&lt;org&gt;/**</code></td>
+<td><code>allow:repo/&lt;org&gt;/**</code></td>
 <td>Access to everything under the organization</td>
 </tr>
 <tr>
-<td><code>allow/repo/&lt;org&gt;/&lt;repo&gt;/**</code></td>
+<td><code>allow:repo/&lt;org&gt;/&lt;repo&gt;/**</code></td>
 <td>Access to everything under the repository</td>
 </tr>
 <tr>
-<td><code>allow/repo/&lt;org&gt;/&lt;repo&gt;/&lt;group&gt;/**</code></td>
+<td><code>allow:repo/&lt;org&gt;/&lt;repo&gt;/&lt;group&gt;/**</code></td>
 <td>Access to all actions under the group</td>
 </tr>
 </tbody>
 </table>
 <h3 id="wildcards">Wildcards</h3>
-<p>These scopes relate to using wildcards for generalized access.</p>
+<p>These permissions relate to using wildcards for generalized access.</p>
 <table>
 <thead>
 <tr>
-<th>Scope</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>allow/repo/*/...</code></td>
+<td><code>allow:repo/*/...</code></td>
 <td>Access to actions under any org</td>
 </tr>
 <tr>
-<td><code>allow/repo/&lt;org&gt;/*/...</code></td>
+<td><code>allow:repo/&lt;org&gt;/*/...</code></td>
 <td>Access to actions under any repo</td>
 </tr>
 <tr>
-<td><code>allow/repo/&lt;org&gt;/&lt;repo&gt;/*/...</code></td>
+<td><code>allow:repo/&lt;org&gt;/&lt;repo&gt;/*/...</code></td>
 <td>Access to actions under any group</td>
 </tr>
 <tr>
-<td><code>allow/repo/*/*/</code></td>
+<td><code>allow:repo/*/*/</code></td>
 <td>Access to actions under any org and any repo</td>
 </tr>
 </tbody>
 </table>
-<p>Note that when scopes have multiple levels of variables you may need to wildcard more then one block.
+<p>Note that when permissions have multiple levels of variables you may need to wildcard more then one block.
 For example if you want to give access for specifically creating hooks ( <code>hooks/create</code> )
-on any repository in any organization, you would use <code>allow/repo/*/*/hooks/create</code>.</p>
-<p>Its possible to give access to any repository in the org as well such as <code>allow/repo/&lt;org&gt;/*/hooks/create</code>.</p>
+on any repository in any organization, you would use <code>allow:repo/*/*/hooks/create</code>.</p>
+<p>Its possible to give access to any repository in the org as well such as <code>allow:repo/&lt;org&gt;/*/hooks/create</code>.</p>
 <p>There is also the unlikely scenario of giving access to a specific repository name in any org such as
-<code>allow/repo/*/docker_images/packages/upload</code> which would give access to upload packages to the "docker_images"
+<code>allow:repo/*/docker_images/packages/upload</code> which would give access to upload packages to the "docker_images"
 repository in any organization.</p>
 <h3 id="variables">Variables</h3>
-<p>Actor scopes can include variables that relate to actor attempting to do the action.
+<p>User permissions can include variables that relate to actor attempting to do the action.
 In our case we are going to use the <code>@username</code> variable which can be used as the organization just like GitHub.</p>
 <table>
 <thead>
 <tr>
-<th>Scope</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>allow/repo/@username/**</code></td>
+<td><code>allow:repo/@username/**</code></td>
 <td>Allow our user to do anything in our own organization</td>
 </tr>
 </tbody>

@@ -829,10 +829,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#server-scopes" class="md-nav__link">
+  <a href="#server-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Server Scopes
+        Server actions
       
     </span>
   </a>
@@ -840,15 +840,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-scopes" class="md-nav__link">
+  <a href="#example-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example scopes
+        Example Permissions
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example scopes">
+    <nav class="md-nav" aria-label="Example Permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -948,10 +948,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#server-scopes" class="md-nav__link">
+  <a href="#server-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Server Scopes
+        Server actions
       
     </span>
   </a>
@@ -959,15 +959,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-scopes" class="md-nav__link">
+  <a href="#example-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example scopes
+        Example Permissions
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example scopes">
+    <nav class="md-nav" aria-label="Example Permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1020,14 +1020,14 @@
 <h1 id="discord-permissions">Discord Permissions</h1>
 <p>Discord users role based authorization for server administration.
 Below is an example of how you might go about supporting the same level
-of control but using scopie and scope based permissions.</p>
+of control but using scopie and permission based actions.</p>
 <p>Not all discord permissions are listed below.</p>
-<h2 id="server-scopes">Server Scopes</h2>
-<p>Our structure for discord scopes is <code>(allow or deny)/server/&lt;server_id&gt;/&lt;group&gt;/&lt;action&gt;</code>.
-This is to allow us to define scopes across different servers while allowing us to
-also create different namespaces for scopes separate from servers later.
-It is also possible to separate server scopes completely from other servers, rather
-then trying to compare the server id within the scope.</p>
+<h2 id="server-actions">Server actions</h2>
+<p>Our structure for discord permissions is <code>(allow or deny):server/&lt;server_id&gt;/&lt;group&gt;/&lt;verb&gt;</code>.
+This is to allow us to define permissions across different servers while allowing us to
+also create different namespaces for permissions separate from servers later.
+It is also possible to separate server permissions completely from other servers, rather
+then trying to compare the server id within the permission.</p>
 <table>
 <thead>
 <tr>
@@ -1124,32 +1124,32 @@ then trying to compare the server id within the scope.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="example-scopes">Example scopes</h2>
-<p>Here are a small list of examples scopes.
+<h2 id="example-permissions">Example Permissions</h2>
+<p>Here are a small list of examples permissions.
 Note that not all of these are practical and would be used in a real scenario.</p>
 <h3 id="super-wildcards">Super wildcards</h3>
 <table>
 <thead>
 <tr>
-<th>Scope</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>allow/**</code></td>
+<td><code>allow:**</code></td>
 <td>Access to everything</td>
 </tr>
 <tr>
-<td><code>allow/server/**</code></td>
+<td><code>allow:server/**</code></td>
 <td>Access to everything on any server</td>
 </tr>
 <tr>
-<td><code>allow/server/&lt;server_id&gt;/**</code></td>
+<td><code>allow:server/&lt;server_id&gt;/**</code></td>
 <td>Access to everything on one server</td>
 </tr>
 <tr>
-<td><code>allow/server/&lt;server_id&gt;/&lt;group&gt;/**</code></td>
+<td><code>allow:server/&lt;server_id&gt;/&lt;group&gt;/**</code></td>
 <td>Access all actions related to a group</td>
 </tr>
 </tbody>
@@ -1159,17 +1159,17 @@ Note that not all of these are practical and would be used in a real scenario.</
 <table>
 <thead>
 <tr>
-<th>Scope</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>allow/server/*/...</code></td>
+<td><code>allow:server/*/...</code></td>
 <td>Access to actions on any server</td>
 </tr>
 <tr>
-<td><code>allow/server/&lt;server_id&gt;/*/...</code></td>
+<td><code>allow:server/&lt;server_id&gt;/*/...</code></td>
 <td>Access to actions on one server</td>
 </tr>
 </tbody>

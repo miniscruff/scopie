@@ -594,10 +594,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scope" class="md-nav__link">
+  <a href="#action" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scope
+        Action
       
     </span>
   </a>
@@ -605,10 +605,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#permisson" class="md-nav__link">
+  <a href="#grant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Permisson
+        Grant
       
     </span>
   </a>
@@ -616,10 +616,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rule" class="md-nav__link">
+  <a href="#permission" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rule
+        Permission
       
     </span>
   </a>
@@ -964,10 +964,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scope" class="md-nav__link">
+  <a href="#action" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scope
+        Action
       
     </span>
   </a>
@@ -975,10 +975,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#permisson" class="md-nav__link">
+  <a href="#grant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Permisson
+        Grant
       
     </span>
   </a>
@@ -986,10 +986,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rule" class="md-nav__link">
+  <a href="#permission" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rule
+        Permission
       
     </span>
   </a>
@@ -1030,14 +1030,14 @@
 <h1 id="terms">Terms</h1>
 <p>Terms and there definitions as it relates to scopie.</p>
 <h2 id="block">Block</h2>
-<p>Values between slashes that indicate levels of our scope.
+<p>Values between slashes that indicate levels of our permission.
 Can contain one of the following:</p>
 <ol>
 <li>A literal string.</li>
 <li>An array of literal strings separated by pipe (<code>|</code>) characters that are treated as an OR list.</li>
 <li>A literal string prefixed by an at (<code>@</code>) that is translated to a value from our variable map.</li>
 <li>A single asterisk (<code>*</code>) that will auto match any value, known as a wildcard.</li>
-<li>Two asterisks (<code>**</code>) that matches the rest of the rule.</li>
+<li>Two asterisks (<code>**</code>) that matches the rest of the action.</li>
 </ol>
 <div class="language-text highlight"><span class="filename">Block examples</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>value
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>one|two|three
@@ -1045,24 +1045,28 @@ Can contain one of the following:</p>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>*
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>**
 </span></code></pre></div>
-<h2 id="scope">Scope</h2>
-<p>One or more blocks, joined by a slash (<code>/</code>).</p>
-<div class="language-text highlight"><span class="filename">Scope examples</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>alpha/beta/omega
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>blog/@user/read|write
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>accounts/**
+<h2 id="action">Action</h2>
+<p>One or more literal blocks, joined by a slash (<code>/</code>) indicating
+what the user is attempting to do.</p>
+<div class="language-text highlight"><span class="filename">Permission examples</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>alpha/beta/omega
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>bucket/images/upload
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>account/root/view
 </span></code></pre></div>
-<h2 id="permisson">Permisson</h2>
-<p>Whether or not we are allowed to do the action.
+<h2 id="grant">Grant</h2>
+<p>Whether or not the user is allowed to do the action.
 Either the literal string <code>allow</code> or <code>deny</code>.</p>
-<h2 id="rule">Rule</h2>
-<p>Permission and literal string separated by slashes (<code>/</code>).
-Only literal values are allowed in rules.</p>
-<div class="language-text highlight"><span class="filename">Rule examples</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>allow/bucket/images/upload
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>deny/iam_accounts/edit
+<h2 id="permission">Permission</h2>
+<p>Permissions are blocks separated by slashes (<code>/</code>).
+Colons are used to separate the grant from the blocks.
+Permissions are attached to users.</p>
+<div class="language-text highlight"><span class="filename">Action examples</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>allow:bucket/images/upload
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>deny:account/**
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>allow:blog/@user/read|write
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>allow:accounts/**
 </span></code></pre></div>
 <h2 id="keywords">Keywords</h2>
 <p>They may not be explicity checked but it is important not to use any scopie keywords when
-defining scopes and rules as they may have unintended side effects.</p>
+defining permissions and actions as they may have unintended side effects.</p>
 <ul>
 <li>allow</li>
 <li>deny</li>
