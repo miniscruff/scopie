@@ -3,7 +3,7 @@ description: Different styles of authorization systems built around scopie.
 ---
 
 # Examples
-Scope and rules for sample projects.
+Permission and actions for sample projects.
 
 <div class="grid cards" markdown>
 ## [:fontawesome-brands-github: GitHub Access Token](./github_token.md)

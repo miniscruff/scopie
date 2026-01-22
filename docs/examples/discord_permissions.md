@@ -6,17 +6,17 @@ description: How to create a discord server like authorization system using scop
 
 Discord users role based authorization for server administration.
 Below is an example of how you might go about supporting the same level
-of control but using scopie and scope based permissions.
+of control but using scopie and permission based actions.
 
 Not all discord permissions are listed below.
 
-## Server Scopes
+## Server actions
 
-Our structure for discord scopes is `(allow or deny)/server/<server_id>/<group>/<action>`.
-This is to allow us to define scopes across different servers while allowing us to
-also create different namespaces for scopes separate from servers later.
-It is also possible to separate server scopes completely from other servers, rather
-then trying to compare the server id within the scope.
+Our structure for discord permissions is `(allow or deny):server/<server_id>/<group>/<verb>`.
+This is to allow us to define permissions across different servers while allowing us to
+also create different namespaces for permissions separate from servers later.
+It is also possible to separate server permissions completely from other servers, rather
+then trying to compare the server id within the permission.
 
 | Group | Action | Description |
 | --- | --- | --- |
@@ -38,25 +38,25 @@ then trying to compare the server id within the scope.
 | messages | files | Able to send files in messages
 | messages | reactions | Able to react to messages
 
-## Example scopes
+## Example Permissions
 
-Here are a small list of examples scopes.
+Here are a small list of examples permissions.
 Note that not all of these are practical and would be used in a real scenario.
 
 ### Super wildcards
 
-| Scope | Description |
+| Permission | Description |
 | --- | --- |
-| `allow/**` | Access to everything
-| `allow/server/**` | Access to everything on any server
-| `allow/server/<server_id>/**` | Access to everything on one server
-| `allow/server/<server_id>/<group>/**` | Access all actions related to a group
+| `allow:**` | Access to everything
+| `allow:server/**` | Access to everything on any server
+| `allow:server/<server_id>/**` | Access to everything on one server
+| `allow:server/<server_id>/<group>/**` | Access all actions related to a group
 
 Note that the last example woudl work the same with a normal wildcard.
 
 ### Wildcards
 
-| Scope | Description |
+| Permission | Description |
 | --- | --- |
-| `allow/server/*/...` | Access to actions on any server
-| `allow/server/<server_id>/*/...` | Access to actions on one server
+| `allow:server/*/...` | Access to actions on any server
+| `allow:server/<server_id>/*/...` | Access to actions on one server

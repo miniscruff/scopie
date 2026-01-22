@@ -11,37 +11,49 @@ handles errors.
 Even the order of parameters may vary based on language due to optional or key value support.
 
 ## Is Allowed
-Returns whether or not the scopes are allowed with the given rules.
+Returns whether or not the user with the given permissions are allowed to complete the action.
 Depending on the language, we would also return an error, throw or raise an exception for invalid
-scopes or rules.
+permissions or actions.
 
 ```py title="Is Allowed"
 is_allowed(
-    # Scopes specifies one or more scopes our actor must match.
-    # When using more then one scope, they are treated as a series of OR conditions,
-    # and an actor will be allowed if they match any of the scopes.
+    # Actions specifies what our user is attempting to do.
     # Example: ["accounts/thor/edit"]
-    scopes []string,
-    # Rules specifies one or more rules our requesting scopes has to have
-    # to be allowed access.
-    # Example: ["allow/accounts/@username/*"]
-    rules []string,
+    actions []string,
+    # Permissions specifies what our user has access to do.
+    # When using more then one permission, they are treated as a series of OR conditions,
+    # and a user will be allowed if they match any of the actions.
+    # Example: ["allow:accounts/thor/**"]
+    permissions []string,
     # An optional dictionary or map of variable to values.
     # Variable keys should not start with `@`
     # Example: { "username": "thor" }
     variables dict[string, string],
-) -> bool and error
+) -> bool and error or raise/exception expected
 ```
 
-## Validate Scopes
-Checks whether or not the given scopes or rules are valid given the
-requirements outlined in the specification.
+## Validate Permissions
+
+Checks the given permissions are valid given the requirements outlined in the specification.
 Depending on the language, this could return a boolean and throw an error, return
 an error or other language standard.
 
-```py title="Validate Scopes"
-validate_scopes(
-    # Given scope or rule to validate.
-    scopeOrRules []string,
+```py title="Validate Permissions"
+validate_permissions(
+    # Given permissions to validate.
+    permissions []string,
+) error
+```
+
+## Validate Actions
+
+Checks the actions are valid given the requirements outlined in the specification.
+Depending on the language, this could return a boolean and throw an error, return
+an error or other language standard.
+
+```py title="Validate Actions"
+validate_actions(
+    # Given actions to validate.
+    actions []string,
 ) error
 ```

@@ -17,7 +17,7 @@ A language agnostic set of scenarios can be found in the [scenarios.json](./scen
 A portion of our application is around building, running and responding to financial reports.
 We run half, quarterly, monthly and weekly reports.
 
-**Actions**
+**Verbs**
 
 1. Edit: Modify how the report is built
 2. Run: Manually run the report
@@ -27,9 +27,9 @@ We run half, quarterly, monthly and weekly reports.
 
 **Format**
 
-For the above reasons we are going to specify our scopes and rules as:
+For the above reasons we are going to specify our permissions and actions as:
 ```
-reports/<duration>/<action>
+reports/<duration>/<verb>
 ```
 
 We could expand this later to include some sort of organization or business
@@ -39,22 +39,22 @@ group but for this example, we will keep it simple.
 
 1. Maya is allowed to do everything ( the boss )
 ```
-allow/**
+allow:**
 ```
 2. Adam is allowed to edit and read any report ( makes changes to the queries )
 ```
-allow/reports/*/edit|read
+allow:reports/*/edit|read
 ```
 3. Tyler can only read reports ( reviews reports but doesn't need to approve them )
 ```
-allow/reports/*/read
+allow:reports/*/read
 ```
 4. Elisa can do everything but delete ( mostly there to approve, but occasionally edits queries )
 ```
-allow/reports/*/*
-deny/reports/*/delete
+allow:reports/*/*
+deny:reports/*/delete
 ```
 5. Jenna can edit and read but only the weekly reports ( a new hire working up )
 ```
-allow/reports/weekly/edit|read
+allow:reports/weekly/edit|read
 ```

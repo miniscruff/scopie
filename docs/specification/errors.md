@@ -4,43 +4,43 @@ description: Explanation and list of all scopie error codes.
 
 # Errors
 
-When validating a scope or trying to process a scope or rule that has an incorrect format we return or throw errors.
+When validating a permission or trying to process a permission or action that has an incorrect format we return or throw errors.
 To keep consistency across languages we define an error format in the specification and include error messages as
 part of the validation test suite.
 
 Parsing the errors should not be required, this format is aimed at being helpful to log for internal debugging,
 but are probably not useful for your end users.
 
-In cases where you are taking user input and saving a scope, you should use the `validate_scope` function to check
+In cases where you are taking user input and saving a permission, you should use the `validate_permission` function to check
 if the provided value is properly formatted.
-You may also need to do extra processing to make sure the values defined in the scope logically make sense
+You may also need to do extra processing to make sure the values defined in the permission logically make sense
 in your system as a whole.
 
 **Formats:**
-When getting an error processing it will mention whether the invalid data came from a rule or scope.
+When getting an error processing it will mention whether the invalid data came from a action or permission.
 ```
 scopie-<code>
-    in <scope or rule>: <short message>
+    in <permission or action>: <short message>
 ```
 
-When using the validation function we omit the scope or rule as they are not given.
+When using the validation function we omit the permission or action as they are not given.
 ```
 scopie-<code> <short message>
 ```
 
-For scopes of `["blog/:15/read"]`, since `:` is not allowed in scopes.
+For permissions of `["blog/:15/read"]`, since `:` is not allowed in permissions.
 ```
-scopie-100 in scope: invalid character ':'
+scopie-100 in permission: invalid character ':'
 ```
 
 Errors here are not in any particular order, but just as they are discovered or valiations written.
 In a lot of cases this will just reiterate the summary of the error but in some it will
-include variables from the respective scope or actor.
+include variables from the respective permission or action.
 
 ## 100
 Invalid character.
 
-Scopie only allows letters, numbers, underscore `_`  and dashes `-` in scope blocks, any other character is invalid.
+Scopie only allows letters, numbers, underscore `_`  and dashes `-` in literal blocks, any other character is invalid.
 
 ```title="Valid"
 blog/15/create
@@ -151,9 +151,9 @@ super wildcard not in the last block
 
 ## 106
 
-Empty scope
+Empty permission or action
 
-Having an empty scope for either the actor or rule doesn't actually make any sense
+Having an empty permission or action for the user doesn't actually make any sense
 for authorization and is likely caused by something else.
 We return an error here instead to hopefully catch this instead of silently denying.
 
@@ -166,25 +166,24 @@ accounts/create
 ```
 
 ```title="Message format"
-scope was empty
+permission was empty
 ```
 
 ## 107
 
-Inconsistent Array
+Permission does not start with a grant
 
-Arrays of scopes and arrays of rules are expected to all be one type.
+All permissions must specify the allow or deny grant as the prefix to the permission.
 
 ```title="Valid"
-accounts/create
-blog/read
+allow:accounts/create
 ```
 
 ```title="Invalid"
-accounts/create
-allow/blog/read
+not-allow:accounts/create
+denies:root/all
 ```
 
 ```title="Message format"
-inconsistent array of scopes and rules
+permission does not start with a grant
 ```
