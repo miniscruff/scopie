@@ -19,8 +19,8 @@ blog/create
 ## Actions
 
 <textarea class="md-typeset" id="actions-input" rows="5" cols="42" wrap="off">
-allow/blog/create|update
-allow/accounts/read
+allow:blog/create|update
+allow:accounts/read
 </textarea>
 <div id="actions-error">Valid</div>
 

@@ -33,6 +33,7 @@ is_allowed(
 ```
 
 ## Validate Permissions
+
 Checks the given permissions are valid given the requirements outlined in the specification.
 Depending on the language, this could return a boolean and throw an error, return
 an error or other language standard.
@@ -45,6 +46,7 @@ validate_permissions(
 ```
 
 ## Validate Actions
+
 Checks the actions are valid given the requirements outlined in the specification.
 Depending on the language, this could return a boolean and throw an error, return
 an error or other language standard.

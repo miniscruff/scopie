@@ -13,13 +13,13 @@ and that every block matches.
 
 ```title="Mismatched Lengths"
 permissions = ["acme/accounts/edit"]
-actions  = ["allow/accounts/*"]
+actions  = ["allow:accounts/*"]
            ^ actions has two levels while required has three
 ```
 
 ```title="Mismatched Block"
 permissions = ["acme/accounts/edit"]
-actions  = ["allow/acme/accounts/read"]
+actions  = ["allow:acme/accounts/read"]
                                ^ edit does not equal read
 ```
 
@@ -31,7 +31,7 @@ If any error is present after the deny action match, it will not be found or ret
 
 ```title="Deny Break"
 permissions = ["accounts/edit"]
-actions  = ["deny/accounts/*","allow/blogs/*"]
+actions  = ["deny:accounts/*","allow:blogs/*"]
                 ^ matches    ^ skipped
 ```
 
@@ -43,31 +43,6 @@ Thus, it is possible to not have errors returned if they are part of actions we 
 
 ```title="Allow Skip"
 permissions = ["accounts/edit"]
-actions  = ["allow/accounts/*","allow/blogs/*"]
+actions  = ["allow:accounts/*","allow:blogs/*"]
            ^ matches          ^ skipped
 ```
-
-## Flowchart
-
-```mermaid
-flowchart TD
-    AA[actions Actions]
-    RP[Required Permissions]
-    D[All Checked]
-    M{Is Match}
-    DA[Deny Action]
-    AlA[Allow Action]
-    T((return true))
-    F((return false))
-
-    AA-->|For each Required Permission|RP
-    RS-->|Does the required permission\nmatch actions action?|M
-    M-->|Is Deny Action|DA
-    M-->|Is Allow Action|AlA
-    DA-->F
-    AlA-->|Mark as allowed|RP
-    RP-->|Checked all cases|D
-    D---->|If allowed|T
-    D---->|If not allowed|F
-```
-

@@ -169,12 +169,11 @@ accounts/create
 permission was empty
 ```
 
-
 ## 107
 
 Permission does not start with a grant
 
-
+All permissions must specify the allow or deny grant as the prefix to the permission.
 
 ```title="Valid"
 allow:accounts/create
