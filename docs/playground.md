@@ -9,6 +9,8 @@ title: Scopie playground
 
 Try out permissions and actions in scopie to determine if the user would be allowed to run that action.
 
+## Under construction
+
 ## permissions
 
 <textarea class="md-typeset" id="permissions-input" rows="5" cols="42" wrap="off">
