@@ -177,12 +177,30 @@
       "permissions": ["maybe:accounts/read"],
       "actions": ["accounts/read"],
       "error": "scopie-107: permission does not start with a grant"
+    },
+    {
+      "id": "permission does not start with grant when second permission",
+      "permissions": ["deny:admin/write", "maybe:accounts/read"],
+      "actions": ["accounts/read"],
+      "error": "scopie-107: permission does not start with a grant"
     }
   ],
   "validateActionsTests": [
     {
       "id": "simple action",
       "actions": ["blog/read"]
+    },
+    {
+      "id": "cased action",
+      "actions": ["Blog/Write"]
+    },
+    {
+      "id": "numbered action",
+      "actions": ["Blog/Write100"]
+    },
+    {
+      "id": "special character action",
+      "actions": ["Blog/Delete-500"]
     },
     {
       "id": "invalid special character",
@@ -203,6 +221,11 @@
       "id": "invalid with array separator",
       "actions": ["blog/a|b"],
       "error": "scopie-100: invalid character '|'"
+    },
+    {
+      "id": "empty action array",
+      "actions": [],
+      "error": "scopie-106: action array was empty"
     },
     {
       "id": "empty action",
@@ -239,6 +262,11 @@
     {
       "id": "combination",
       "permissions": ["allow:blog/*/@region/primary|secondary/**"]
+    },
+    {
+      "id": "empty permissions",
+      "permissions": [],
+      "error": "scopie-106: permission array was empty"
     },
     {
       "id": "invalid start",
