@@ -183,6 +183,150 @@
       "permissions": ["deny:admin/write", "maybe:accounts/read"],
       "actions": ["accounts/read"],
       "error": "scopie-107: permission does not start with a grant"
+    },
+    {
+      "id": "order invariance deny overrides allow regardless of position",
+      "permissions": [
+        "allow:blog/read",
+        "deny:blog/read",
+        "allow:blog/*"
+      ],
+      "actions": ["blog/read"],
+      "result": false
+    },
+    {
+      "id": "order invariance deny overrides allow when deny is first",
+      "permissions": [
+        "deny:blog/read",
+        "allow:blog/read",
+        "allow:blog/*"
+      ],
+      "actions": ["blog/read"],
+      "result": false
+    },
+    {
+      "id": "duplicate allow permissions do not change result",
+      "permissions": [
+        "allow:blog/read",
+        "allow:blog/read"
+      ],
+      "actions": ["blog/read"],
+      "result": true
+    },
+    {
+      "id": "duplicate deny permissions do not change result",
+      "permissions": [
+        "deny:blog/read",
+        "deny:blog/read"
+      ],
+      "actions": ["blog/read"],
+      "result": false
+    },
+    {
+      "id": "adding deny always flips allow to deny",
+      "permissions": [
+        "allow:blog/read",
+        "deny:blog/read"
+      ],
+      "actions": ["blog/read"],
+      "result": false
+    },
+    {
+      "id": "adding allow after deny does not flip deny",
+      "permissions": [
+        "deny:blog/read",
+        "allow:blog/read",
+        "allow:blog/*"
+      ],
+      "actions": ["blog/read"],
+      "result": false
+    },
+    {
+      "id": "single wildcard does not match multiple segments",
+      "permissions": ["allow:blog/*"],
+      "actions": ["blog/a/b"],
+      "result": false
+    },
+    {
+      "id": "super wildcard matches deep paths",
+      "permissions": ["allow:blog/**"],
+      "actions": ["blog/a/b/c/d/e"],
+      "result": true
+    },
+    {
+      "id": "super wildcard does not match zero segments",
+      "permissions": ["allow:blog/**"],
+      "actions": ["blog"],
+      "result": false
+    },
+    {
+      "id": "variable resolves but does not match action",
+      "permissions": ["allow:blog/@owner/read"],
+      "actions": ["blog/alice/read"],
+      "variables": {
+        "owner": "bob"
+      },
+      "result": false
+    },
+    {
+      "id": "variable substitution cannot bypass deny",
+      "permissions": [
+        "allow:org/@id/**",
+        "deny:org/private/**"
+      ],
+      "actions": ["org/private/data"],
+      "variables": {
+        "id": "private"
+      },
+      "result": false
+    },
+    {
+      "id": "variable combined with wildcard matches correctly",
+      "permissions": ["allow:tenant/@tenant/*"],
+      "actions": ["tenant/acme/project1"],
+      "variables": {
+        "tenant": "acme"
+      },
+      "result": true
+    },
+    {
+      "id": "multiple matching allows result in allow",
+      "permissions": [
+        "allow:blog/*",
+        "allow:blog/read"
+      ],
+      "actions": ["blog/read"],
+      "result": true
+    },
+    {
+      "id": "child deny overrides parent allow",
+      "permissions": [
+        "allow:admin/**",
+        "deny:admin/users/**"
+      ],
+      "actions": ["admin/users/delete"],
+      "result": false
+    },
+    {
+      "id": "parent deny overrides child allow",
+      "permissions": [
+        "deny:admin/**",
+        "allow:admin/users/read"
+      ],
+      "actions": ["admin/users/read"],
+      "result": false
+    },
+    {
+      "id": "double slash in action does not match",
+      "permissions": ["allow:blog/read"],
+      "actions": ["blog//read"],
+      "result": false
+    },
+    {
+      "id": "leading slash in action does not match",
+      "permissions": ["allow:blog/read"],
+      "actions": ["/blog/read"],
+      "result": false
     }
   ],
   "validateActionsTests": [
