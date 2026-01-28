@@ -1,7 +1,7 @@
 window.addEventListener("load", async function() {
   console.log("scopie playground initializing")
 
-  window.scopie = await import("/static/scopie.browser.min.v0.4.0.js");
+  window.scopie = await import("/static/scopie.browser.min.v0.5.0.js");
 
   window.permissionsInput = document.getElementById("permissions-input");
   window.permissionsError = document.getElementById("permissions-error");
@@ -21,8 +21,8 @@ window.addEventListener("load", async function() {
     } else {
       try {
         window.isAllowedDisplay.textContent = window.scopie.isAllowed(
-          window.permissionsInput.value.trim().split('\n'),
           window.actionsInput.value.trim().split('\n'),
+          window.permissionsInput.value.trim().split('\n'),
         ) ? "Is Allowed" : "Is Not Allowed"
       } catch (e) {
         window.isAllowedDisplay.textContent = e.toString();
@@ -37,7 +37,7 @@ window.addEventListener("load", async function() {
     window.updateAllowedState();
   });
   window.actionsInput.addEventListener("keyup", function() {
-    const e = window.scopie.validatePermissions(window.actionsInput.value.trim().split('\n'))
+    const e = window.scopie.validateActions(window.actionsInput.value.trim().split('\n'))
     window.actionsValid = e === undefined;
     window.actionsError.textContent = window.actionsValid ? "Valid" : e.toString();
     window.updateAllowedState();
