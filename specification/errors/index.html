@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../static/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1112,7 +1112,7 @@ When getting an error processing it will mention whether the invalid data came f
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scopie-&lt;code&gt; &lt;short message&gt;
 </span></code></pre></div></p>
 <p>For permissions of <code>["blog/:15/read"]</code>, since <code>:</code> is not allowed in permissions.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in permission: invalid character &#39;:&#39;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scopie-100 in permission: invalid character ':'
 </span></code></pre></div></p>
 <p>Errors here are not in any particular order, but just as they are discovered or valiations written.
 In a lot of cases this will just reiterate the summary of the error but in some it will
@@ -1123,9 +1123,9 @@ include variables from the respective permission or action.</p>
 <div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>blog/15/create
 </span></code></pre></div>
 <div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>blog/:15/create
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>     ^ invalid character &#39;:&#39;
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>     ^ invalid character ':'
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>invalid character &#39;{character}&#39;
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>invalid character '{character}'
 </span></code></pre></div>
 <h2 id="101">101</h2>
 <p>Variable inside array group.</p>
@@ -1137,7 +1137,7 @@ array blocks that are one of a few actions or specific namespaces.</p>
 <div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>projects/acme|sesame|@project/repository/create
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                     ^ variable not allowed inside array group
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>variable &#39;{key}&#39; found in array block
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>variable '{key}' found in array block
 </span></code></pre></div>
 <h2 id="102">102</h2>
 <p>Wildcard in array.</p>
@@ -1162,14 +1162,14 @@ Having a super wildcard would override any array or literal value.</p>
 <h2 id="104">104</h2>
 <p>Variable key not found in dictionary.</p>
 <p>A variable was referenced that does not exist in the variable map or dictionary.</p>
-<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vars = { &quot;project&quot;: &quot;acme&quot; }
+<div class="language-text highlight"><span class="filename">Valid</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vars = { "project": "acme" }
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>projects/@project/repository/create
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>vars = { &quot;user&quot;: &quot;tnt&quot; }
+<div class="language-text highlight"><span class="filename">Invalid</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>vars = { "user": "tnt" }
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>projects/@project/repository/create
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>         ^ variable project does not exist
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>variable &#39;{key}&#39; not found
+<div class="language-text highlight"><span class="filename">Message format</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>variable '{key}' not found
 </span></code></pre></div>
 <h2 id="105">105</h2>
 <p>Super wildcard not in the last block</p>
@@ -1263,7 +1263,7 @@ We return an error here instead to hopefully catch this instead of silently deny
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.top", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

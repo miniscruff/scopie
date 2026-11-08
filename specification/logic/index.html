@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../static/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -988,28 +988,28 @@
 <h2 id="matching">Matching</h2>
 <p>In order for a permission to match a action it must have the same number of blocks,
 and that every block matches.</p>
-<div class="language-text highlight"><span class="filename">Mismatched Lengths</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>permissions = [&quot;acme/accounts/edit&quot;]
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>actions  = [&quot;allow:accounts/*&quot;]
+<div class="language-text highlight"><span class="filename">Mismatched Lengths</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>permissions = ["acme/accounts/edit"]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>actions  = ["allow:accounts/*"]
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>           ^ actions has two levels while required has three
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Mismatched Block</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>permissions = [&quot;acme/accounts/edit&quot;]
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>actions  = [&quot;allow:acme/accounts/read&quot;]
+<div class="language-text highlight"><span class="filename">Mismatched Block</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>permissions = ["acme/accounts/edit"]
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>actions  = ["allow:acme/accounts/read"]
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                               ^ edit does not equal read
 </span></code></pre></div>
 <h2 id="deny-break">Deny Break</h2>
 <p>If a permission matches a deny action, we instantly return false.
 We do not check until the end of our loops in this case.
 If any error is present after the deny action match, it will not be found or returned.</p>
-<div class="language-text highlight"><span class="filename">Deny Break</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>permissions = [&quot;accounts/edit&quot;]
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>actions  = [&quot;deny:accounts/*&quot;,&quot;allow:blogs/*&quot;]
+<div class="language-text highlight"><span class="filename">Deny Break</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>permissions = ["accounts/edit"]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>actions  = ["deny:accounts/*","allow:blogs/*"]
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                ^ matches    ^ skipped
 </span></code></pre></div>
 <h2 id="allow-skips">Allow skips</h2>
 <p>If an allow action is matched early in the loop, we can skip trying to match any future
 allow actions as we already matched one.
 Thus, it is possible to not have errors returned if they are part of actions we skipped.</p>
-<div class="language-text highlight"><span class="filename">Allow Skip</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>permissions = [&quot;accounts/edit&quot;]
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>actions  = [&quot;allow:accounts/*&quot;,&quot;allow:blogs/*&quot;]
+<div class="language-text highlight"><span class="filename">Allow Skip</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>permissions = ["accounts/edit"]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>actions  = ["allow:accounts/*","allow:blogs/*"]
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>           ^ matches          ^ skipped
 </span></code></pre></div>
 
@@ -1073,7 +1073,7 @@ Thus, it is possible to not have errors returned if they are part of actions we 
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.top", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
