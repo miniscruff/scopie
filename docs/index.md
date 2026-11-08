@@ -26,9 +26,9 @@ Implementations are expected to conform exactly to the scenarios for their suppo
 - A deterministic scope evaluator
 - Based on hierarchical paths, wildcards, arrays, and variables
 - Explicit allow vs deny semantics
-- Langauge agnostic via a shared specification
+- Language agnostic via a shared specification
 - Easy to reason about and test
-- ??? data owned by you
+- Works on data owned by you
 
 ### Scopie is *not*:
 
